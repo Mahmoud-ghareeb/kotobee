@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <?php if ($course['course_type'] == 'general') : ?>
-                                    <span class=""><i class="fa-solid fa-book-open"></i>
+                                    <span class=""><i class="fa fa-book"></i>
                                         <?php
                                         $number_of_lessons = $this->crud_model->get_lessons('course', $course['id'])->num_rows();
                                         echo $number_of_lessons . ' ' . site_phrase('lessons');
