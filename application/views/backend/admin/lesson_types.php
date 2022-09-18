@@ -25,10 +25,10 @@
     <input id="course_id_for_lesson" type="hidden" value="<?= $param2; ?>" name="course_id_for_lesson">
 <?php endif; ?>
 
-<h5 class="header-title mt-5 mt-sm-0"><?php echo get_phrase('select_lesson_type') ?></h5>
+<h5 class="header-title mt-5 mt-sm-0"><?php echo get_phrase('select_book_to upload') ?></h5>
 
 <div class="mt-3">
-    <div class="custom-control custom-radio">
+    <!-- <div class="custom-control custom-radio">
         <input type="radio" id="youtube" name="lesson_type" class="custom-control-input" value="youtube" <?php if($selected_lesson == 'youtube') echo 'checked'; ?>>
         <label class="custom-control-label" for="youtube">YouTube <?php echo get_phrase('video'); ?></label>
     </div>
@@ -65,14 +65,17 @@
     <div class="custom-control custom-radio">
         <input type="radio" id="image" name="lesson_type" class="custom-control-input" value="image" <?php if($selected_lesson == 'image') echo 'checked'; ?>>
         <label class="custom-control-label" for="image"><?php echo get_phrase('image_file'); ?></label>
-    </div>
-    <div class="custom-control custom-radio">
-        <input type="radio" id="iframe" name="lesson_type" class="custom-control-input" value="iframe" <?php if($selected_lesson == 'iframe') echo 'checked'; ?>>
+    </div> -->
+
+    <?php include "book_type_lesson_add.php" ?>
+
+    <div class="custom-control custom-radio d-none">
+        <input type="radio" id="iframe" name="lesson_type" class="custom-control-input" value="iframe" checked>
         <label class="custom-control-label" for="iframe"><?php echo get_phrase('iframe_embed'); ?></label>
     </div>
 
     <div class="mt-3">
-        <a href="javascript::void(0)"
+        <a href="javascript:void(0)"
         type="button"
         class="btn btn-primary"
         data-toggle="modal"
@@ -93,6 +96,39 @@
         }
         
     }
+
+    $(function() {
+    var formSubmissionBtn = $('#bookUpload');
+    var formSubmissionBtnTxt = $(formSubmissionBtn).html();
+    //The form of submission to RailTeam js is defined here.(Form class or ID)
+    $('#bookUpload').ajaxForm({
+        beforeSend: function() {
+            var percentVal = '0%';
+            $(formSubmissionBtn).html('<?php echo get_phrase('uploading'); ?>... '+percentVal);
+            $(formSubmissionBtn).attr('disabled', true);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            if(percentComplete < 100){
+                $(formSubmissionBtn).html('<?php echo get_phrase('uploading'); ?>... '+percentVal);
+            }else{
+                $(formSubmissionBtn).html('<?php echo get_phrase('please_wait'); ?>... '+percentVal);
+            }
+        },
+        complete: function(xhr) {
+            setTimeout(function(){
+                $(formSubmissionBtn).attr('disabled', false);
+                $(formSubmissionBtn).html(formSubmissionBtnTxt);
+                set_js_flashdata('<?php echo site_url('home/set_flashdata_for_js/flash_message/your_video_file_uploaded_succesfully') ?>');
+                location.reload();
+            }, 500);
+        },
+        error: function()
+        {
+            //You can write here your js error message
+        }
+    });
+});
 
     if($('select').hasClass('select2') == true){
         $('div').attr('tabindex', "");

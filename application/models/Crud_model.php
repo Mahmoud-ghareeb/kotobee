@@ -1339,6 +1339,23 @@ class Crud_model extends CI_Model
         }
     }
 
+    public function add_book()
+    {
+        $fileName           = $_FILES['attachment']['name'];
+        $tmp                = explode('.', $fileName);
+        $fileExtension      = end($tmp);
+        $uniqueName = md5(uniqid(rand(), true));
+        $uploadable_file    =  $uniqueName . '.' . $fileExtension;
+        $data['attachment'] = $uploadable_file;
+
+        if (!file_exists('uploads/books')) {
+            mkdir('uploads/books', 0777, true);
+        }
+        mkdir('uploads/books/' . $uniqueName, 0777, true);
+        move_uploaded_file($_FILES['attachment']['tmp_name'], 'uploads/books/' . $uniqueName . '/' . $uploadable_file);
+                
+    }
+
     public function edit_lesson($lesson_id)
     {
 

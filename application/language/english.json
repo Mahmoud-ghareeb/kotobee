@@ -710,5 +710,14 @@
     "enter_your_text": "Enter your text",
     "your_video_file_uploaded_succesfully": "Your video file uploaded succesfully",
     "category_name_already_exists": "Category name already exists",
-    "search_results": "Search results"
+    "search_results": "Search results",
+    "updated": "Updated",
+    "preview_this_course": "Preview this course",
+    "course_preview": "Course preview",
+    "video_url_is_not_supported": "Video url is not supported",
+    "select_book_to_upload": "Select book to upload",
+    "preview": "Preview",
+    "external_source": "External source",
+    "no_summary_found": "No summary found",
+    "copy_this_folder_name": "Copy this folder name"
 }

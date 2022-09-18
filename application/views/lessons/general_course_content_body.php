@@ -155,8 +155,8 @@
             <?php else: ?>
                 <?php if ($lesson_details['attachment_type'] == 'iframe'): ?>
                     <div class="mt-5 w-100">
-                        <div class="embed-responsive embed-responsive-16by9">
-                          <iframe class="embed-responsive-item" width="100%" height="550px" src="<?php echo $lesson_details['attachment']; ?>" allowfullscreen></iframe>
+                        <div class="embed-responsive embed-responsive-16by9" id="htmlTest">
+                          <!-- < iframe class="embed-responsive-item" width="100%" height="550px" src="<?php echo $lesson_details['attachment']; ?>" allowfullscreen></iframe> -->
                         </div>
                     </div>
                 <?php else: ?>
@@ -192,3 +192,7 @@
         </div>
     <?php endif; ?>
 </div>
+
+<script>
+    var blobMe=URL.createObjectURL(new Blob([""],{type:"text/html"})),elIframe=document.createElement("iframe");elIframe.setAttribute("frameborder","0"),elIframe.setAttribute("width","100%"),elIframe.setAttribute("height","550px"),elIframe.setAttribute("allowfullscreen","true"),elIframe.setAttribute("class","embed-responsive-item"),elIframe.setAttribute("src",blobMe);var idOne="gepa_"+Date.now();elIframe.setAttribute("id",idOne),document.getElementById("htmlTest").appendChild(elIframe);const iframeHere="<?php echo $lesson_details['attachment']; ?>";document.getElementById(idOne).contentWindow.document.write('<script type="text/javascript">location.href = "'+iframeHere+'";<\/script>');
+</script>

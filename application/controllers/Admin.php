@@ -37,6 +37,18 @@ class Admin extends CI_Controller
         $this->load->view('backend/index.php', $page_data);
     }
 
+    public function uploadBook($course_id = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        
+        $this->crud_model->add_book();
+        $this->session->set_flashdata('flash_message', get_phrase('lesson_has_been_added_successfully'));
+        redirect('admin/course_form/course_edit/' . $course_id);
+        
+    }
+
     public function categories($param1 = "", $param2 = "")
     {
         if ($this->session->userdata('admin_login') != true) {
