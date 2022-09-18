@@ -43,7 +43,7 @@
                                         <?php echo $course['short_description']; ?>
                                     </div>
                                     <div class="course-meta">
-                                        <span class=""><i class="fas fa-play-circle"></i>
+                                        <span class=""><i class="fa-solid fa-book-open"></i>
                                             <?php
                                             $number_of_lessons = $this->crud_model->get_lessons('course', $course['id'])->num_rows();
                                             echo $number_of_lessons.' '.site_phrase('lessons');
