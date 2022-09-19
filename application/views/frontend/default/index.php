@@ -1,5 +1,11 @@
+<?php 
+
+	$lang = $this->session->userdata('language');
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html <?php if ($lang == 'arabic'){ ?> lang="ar" <?php }else{ ?> lang="en" <?php } ?>>
 <head>
 	<?php if ($page_name == 'course_page'):
 		$title = $this->crud_model->get_course_by_id($course_id)->row_array()?>
@@ -55,7 +61,11 @@
 
 	<link name="favicon" type="image/x-icon" href="<?php echo base_url('uploads/system/'.get_frontend_settings('favicon')); ?>" rel="shortcut icon" />
 	<?php include 'includes_top.php';?>
-
+	<style>
+		.d-none{
+			display: none;
+		}
+	</style>
 </head>
 <body class="gray-bg">
 	<?php

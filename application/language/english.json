@@ -719,5 +719,7 @@
     "preview": "Preview",
     "external_source": "External source",
     "no_summary_found": "No summary found",
-    "copy_this_folder_name": "Copy this folder name"
+    "copy_this_folder_name": "Copy this folder name",
+    "language_added_successfully": "Language added successfully",
+    "on_demand_books": "On demand books"
 }
