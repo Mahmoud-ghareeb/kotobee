@@ -11,7 +11,7 @@
   }
 </style>
 
-  <ul class="mobile-main-nav">
+  <ul class="mobile-main-nav" dir="ltr">
     <div class="mobile-menu-helper-top"></div>
     <?php if($course_accessibility): ?>
     <li class="has-children text-nowrap fw-bold">
@@ -21,7 +21,7 @@
         <span class="has-sub-category"><i class="fas fa-angle-right"></i></span>
       </a>
 
-      <ul class="category corner-triangle top-left is-hidden pb-0" >
+      <ul class="category corner-triangle top-left is-hidden pb-0" dir="ltr">
         <li class="go-back"><a href=""><i class="fas fa-angle-left"></i><?php echo site_phrase('menu'); ?></a></li>
 
           <?php

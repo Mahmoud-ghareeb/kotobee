@@ -16,7 +16,7 @@ $user_details = $this->user_model->get_user($this->session->userdata('user_id'))
             
             <?php include 'menu.php'; ?>
 
-            <form class="inline-form me-2" action="<?php echo site_url('home/search'); ?>" method="get" style="width: 100%;">
+            <form class="inline-form me-2" dir="ltr" action="<?php echo site_url('home/search'); ?>" method="get" style="width: 100%;">
                 <div class="input-group search-box mobile-search">
                     <input type="text" name='query' class="form-control" placeholder="<?php echo site_phrase('search_for_courses'); ?>">
                     <div class="input-group-append">

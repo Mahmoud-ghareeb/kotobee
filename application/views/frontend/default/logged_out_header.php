@@ -11,7 +11,7 @@
 
       <?php include 'menu.php'; ?>
 
-      <form class="inline-form me-auto" action="<?php echo site_url('home/search'); ?>" method="get">
+      <form class="inline-form me-auto" dir="ltr" action="<?php echo site_url('home/search'); ?>" method="get">
         <div class="input-group search-box mobile-search">
           <input type="text" name = 'query' class="form-control" placeholder="<?php echo site_phrase('search_for_courses'); ?>">
           <div class="input-group-append">

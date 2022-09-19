@@ -1,6 +1,6 @@
 <section class="home-banner-area" id="home-banner-area" style="background-image: url('<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>'); background-position: right; background-repeat: no-repeat; padding: 100px 0 75px; background-size: auto 100%; color: #fff;">
     <div class="cropped-home-banner" ></div>
-    <div class="container-xl">
+    <div class="container-xl" dir="ltr">
         <div class="row">
             <div class="col position-relative">
                 <div class="home-banner-wrap">
@@ -83,7 +83,7 @@
                 <?php $top_10_categories = $this->crud_model->get_top_categories(12, 'sub_category_id'); ?>
                 <?php foreach($top_10_categories as $top_10_category): ?>
                     <?php $category_details = $this->crud_model->get_category_details_by_id($top_10_category['sub_category_id'])->row_array(); ?>
-                    <div class="col-md-6 col-lg-4 col-xl-3 mb-3">
+                    <div class="col-md-6 col-lg-4 col-xl-3 mb-3" dir="ltr">
                         <a href="<?php echo site_url('home/courses?category='.$category_details['slug']); ?>" class="top-categories">
                             <div class="category-icon">
                                 <i class="<?php echo $category_details['font_awesome_class']; ?>"></i>
