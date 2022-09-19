@@ -22,7 +22,7 @@
               <form action="<?php echo site_url('login/register'); ?>" method="post" id="sign_up">
                 <div class="form-group">
                   <label for="first_name"><?php echo site_phrase('first_name'); ?></label>
-                  <div class="input-group">
+                  <div class="input-group" dir="ltr">
                     <span class="input-group-text bg-white" for="first_name"><i class="fas fa-user"></i></span>
                     <input type="text" name="first_name" class="form-control" placeholder="<?php echo site_phrase('first_name'); ?>" aria-label="<?php echo site_phrase('first_name'); ?>" aria-describedby="<?php echo site_phrase('first_name'); ?>" id="first_name" required>
                   </div>
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                   <label for="last_name"><?php echo site_phrase('last_name'); ?></label>
-                  <div class="input-group">
+                  <div class="input-group" dir="ltr">
                     <span class="input-group-text bg-white" for="last_name"><i class="fas fa-user"></i></span>
                     <input type="text" name="last_name" class="form-control" placeholder="<?php echo site_phrase('last_name'); ?>" aria-label="<?php echo site_phrase('last_name'); ?>" aria-describedby="<?php echo site_phrase('last_name'); ?>" id="last_name" required>
                   </div>
@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                   <label for="registration-email"><?php echo site_phrase('email'); ?></label>
-                  <div class="input-group">
+                  <div class="input-group" dir="ltr">
                     <span class="input-group-text bg-white" for="email"><i class="fas fa-envelope"></i></span>
                     <input type="email" name="email" class="form-control" placeholder="<?php echo site_phrase('email'); ?>" aria-label="<?php echo site_phrase('email'); ?>" aria-describedby="<?php echo site_phrase('email'); ?>" id="registration-email" required>
                   </div>
@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                   <label for="registration-password"><?php echo site_phrase('password'); ?></label>
-                  <div class="input-group">
+                  <div class="input-group" dir="ltr">
                     <span class="input-group-text bg-white" for="password"><i class="fas fa-key"></i></span>
                     <input type="password" name="password" class="form-control" placeholder="<?php echo site_phrase('password'); ?>" aria-label="<?php echo site_phrase('password'); ?>" aria-describedby="<?php echo site_phrase('password'); ?>" id="registration-password" required>
                   </div>
