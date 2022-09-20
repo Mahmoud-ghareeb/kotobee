@@ -442,7 +442,7 @@
     </section>
 
 
-    <section class="featured-instructor">
+    <section class="featured-instructor d-none">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
