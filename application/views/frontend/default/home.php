@@ -123,8 +123,8 @@
                                             <img src="<?php echo $this->crud_model->get_course_thumbnail_url($top_course['id']); ?>" alt="" class="img-fluid">
                                         </div>
                                         <div class="course-details">
-                                            <h5 class="title"><?php echo $top_course['title']; ?></h5>
-                                            <div class="rating">
+                                            <h5 class="title" style="width: fit-content;margin: 0px auto 10px;"><?php echo $top_course['title']; ?></h5>
+                                            <div class="rating" style="width: fit-content;margin: 0px auto 10px;">
                                                 <?php
                                                 $total_rating =  $this->crud_model->get_ratings('course', $top_course['id'], true)->row()->rating;
                                                 $number_of_ratings = $this->crud_model->get_ratings('course', $top_course['id'])->num_rows();
@@ -146,7 +146,7 @@
                                                     <span class="text-dark text-12px text-muted ms-2">(<?php echo $number_of_ratings.' '.site_phrase('reviews'); ?>)</span>
                                                 </div>
                                             </div>
-                                            <div class="d-flex text-dark">
+                                            <div class="d-flex text-dark d-none">
                                                 <div class="">
                                                     <i class="far fa-clock text-14px"></i>
                                                     <span class="text-muted text-12px"><?php echo $course_duration; ?></span>
@@ -157,7 +157,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mt-3">
+                                            <div class="row mt-3 d-none">
                                                 <div class="col-6">
                                                     <span class="badge badge-sub-warning text-11px"><?php echo site_phrase($top_course['level']); ?></span>
                                                 </div>
@@ -166,10 +166,10 @@
                                                 </div>
                                             </div>
 
-                                            <hr class="divider-1">
+                                            <hr class="divider-1 d-none">
 
-                                            <div class="d-block">
-                                                <div class="floating-user d-inline-block">
+                                            <div class="d-block d-none">
+                                                <div class="floating-user d-inline-block d-none">
                                                     <?php if ($top_course['multi_instructor']):
                                                         $instructor_details = $this->user_model->get_multi_instructor_details_with_csv($top_course['user_id']);
                                                         $margin = 0;
