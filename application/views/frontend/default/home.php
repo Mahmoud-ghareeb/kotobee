@@ -533,7 +533,7 @@
     </section>
 <?php endif; ?>
 
-
+<?php if(0){ ?>
 <div class="container-xl">
     <div class="row justify-content-evenly py-3 mb-4">
       <div class="col-md-6 <?php if (get_settings('allow_instructor') != 1) echo 'w-100'; ?> mt-3 mt-md-0">
@@ -556,6 +556,7 @@
       <?php endif; ?>
     </div>
 </div>
+<?php } ?>
 <script type="text/javascript">
     function handleWishList(elem) {
 
