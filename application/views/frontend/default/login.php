@@ -46,6 +46,21 @@
                 <button type="submit" class="btn red radius-10 mt-4 w-100"><?php echo site_phrase('login'); ?></button>
               </div>
 
+              <script src="https://accounts.google.com/gsi/client" async defer></script>
+              <div id="g_id_onload"
+                data-client_id="268100085937-ej7qc7ll02di15570g29sh9tkvposl37.apps.googleusercontent.com"
+                data-login_uri="https://kotobee.online/home/google_login"
+                data-auto_prompt="false">
+              </div>
+              <div class="g_id_signin"
+                data-type="standard"
+                data-size="large"
+                data-theme="outline"
+                data-text="sign_in_with"
+                data-shape="rectangular"
+                data-logo_alignment="left">
+              </div>
+
               <div class="form-group mt-4 mb-0 text-center">
                 <?php echo site_phrase('do_not_have_an_account'); ?>?
                 <a class="text-15px fw-700" href="<?php echo site_url('home/sign_up') ?>"><?php echo site_phrase('sign_up'); ?></a>

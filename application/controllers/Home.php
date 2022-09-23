@@ -1198,4 +1198,9 @@ class Home extends CI_Controller
         }
         print_r($course_ids);
     }
+
+    public function google_login()
+    {
+        return "hi";
+    }
 }
