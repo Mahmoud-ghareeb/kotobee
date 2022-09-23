@@ -1201,6 +1201,7 @@ class Home extends CI_Controller
 
     public function google_login()
     {
-        return "hi";
+        print_r($_GET);
+        print_r($_POST);
     }
 }
