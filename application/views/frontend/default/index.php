@@ -5,7 +5,7 @@
 ?>
 
 <!DOCTYPE html>
-<html <?php if ($lang == 'arabic'){ ?> lang="ar" dir="rtl" <?php }else{ ?> lang="en" <?php } ?>>
+<html <?php if ($lang == 'arabic'){ ?> lang="ar" <?php }else{ ?> lang="en" <?php } ?>>
 <head>
 	<?php if ($page_name == 'course_page'):
 		$title = $this->crud_model->get_course_by_id($course_id)->row_array()?>
