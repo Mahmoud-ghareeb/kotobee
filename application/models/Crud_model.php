@@ -139,7 +139,8 @@ class Crud_model extends CI_Model
     public function enrol_history($course_id = "")
     {
         if ($course_id > 0) {
-            return $this->db->get_where('enrol', array('course_id' => $course_id));
+            // return $this->db->get_where('enrol', array('course_id' => $course_id));
+            return $this->db->get_where('enrol');
         } else {
             return $this->db->get('enrol');
         }
@@ -834,8 +835,8 @@ class Crud_model extends CI_Model
         $this->db->delete('course');
 
         // DELETE ALL THE enrolment OF THIS COURSE FROM enrol TABLE
-        $this->db->where('course_id', $course_id);
-        $this->db->delete('enrol');
+        // $this->db->where('course_id', $course_id);
+        // $this->db->delete('enrol');
 
         if ($course_type == 'general') {
             // DELETE ALL THE LESSONS OF THIS COURSE FROM LESSON TABLE
@@ -1822,6 +1823,7 @@ class Crud_model extends CI_Model
             $data['user_id'] = $user_id;
             $data['course_id'] = $purchased_course;
             $data['date_added'] = strtotime(date('D, d-M-Y'));
+            $data['date_expired'] = strtotime('+1 year', strtotime(date('D, d-M-Y')));
             $this->db->insert('enrol', $data);
         }
     }
@@ -1833,6 +1835,7 @@ class Crud_model extends CI_Model
             $this->session->set_flashdata('error_message', get_phrase('student_has_already_been_enrolled_to_this_course'));
         } else {
             $data['date_added'] = strtotime(date('D, d-M-Y'));
+            $data['date_expired'] = strtotime('+1 year', strtotime(date('D, d-M-Y')));
             $this->db->insert('enrol', $data);
             $this->session->set_flashdata('flash_message', get_phrase('student_has_been_enrolled_to_that_course'));
         }
@@ -1848,6 +1851,7 @@ class Crud_model extends CI_Model
             return json_encode($response);
         } else {
             $data['date_added'] = strtotime(date('D, d-M-Y'));
+            $data['date_expired'] = strtotime('+1 year', strtotime(date('D, d-M-Y')));
             $this->db->insert('enrol', $data);
             $this->session->set_flashdata('flash_message', get_phrase('student_has_been_enrolled_to_that_course'));
 
@@ -2758,7 +2762,8 @@ class Crud_model extends CI_Model
 
     function check_course_enrolled($course_id = "", $user_id = "")
     {
-        return $this->db->get_where('enrol', array('course_id' => $course_id, 'user_id' => $user_id))->num_rows();
+        // return $this->db->get_where('enrol', array('course_id' => $course_id, 'user_id' => $user_id))->num_rows();
+        return $this->db->get_where('enrol', array('user_id' => $user_id))->num_rows();
     }
 
 
@@ -2911,7 +2916,7 @@ class Crud_model extends CI_Model
             return false;
         }
         $this->db->select('user_id');
-        $this->db->where_in('course_id', $course_ids);
+        // $this->db->where_in('course_id', $course_ids);
         return $this->db->get('enrol');
     }
 
