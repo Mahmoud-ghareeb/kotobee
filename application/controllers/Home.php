@@ -1249,7 +1249,7 @@ class Home extends CI_Controller
         // print_r(json_encode($final_res));
         // return 0;
         $payment_token = $final_res->token;
-        redirect("https://accept.paymob.com/api/acceptance/iframes/402235?payment_token=$payment_token");
+        redirect("https://accept.paymob.com/api/acceptance/iframes/682640?payment_token=$payment_token");
           
         //print_r(json_encode($this->response));
     }
