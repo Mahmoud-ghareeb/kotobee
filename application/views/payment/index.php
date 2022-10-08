@@ -17,11 +17,10 @@
 <body>
 	<?php
 		if($this->session->userdata('app_url')):
-			//include "go_back_to_mobile_app.php";
+			include "go_back_to_mobile_app.php";
 		endif;
-		
 		echo '<div class="container-fluid">';
-			include $page_name . '.php';
+			include 'payment_gateway.php';
 		echo '</div>';
 
 		include 'includes_bottom.php';
