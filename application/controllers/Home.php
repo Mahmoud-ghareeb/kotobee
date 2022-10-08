@@ -518,14 +518,9 @@ class Home extends CI_Controller
                 endif;
             }
         }else{
-            if ($payment_request_mobile == 'true') :
-                $course_id = $this->session->userdata('cart_items');
-                $this->session->set_flashdata('flash_message', $response['status_msg']);
-                redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/error', 'refresh');
-            else :
-                $this->session->set_flashdata('error_message', site_phrase('payment_failed').'! '.site_phrase('something_is_wrong'));
-                redirect('home/shopping_cart', 'refresh');
-            endif;
+            $this->session->set_flashdata('error_message', site_phrase('payment_failed').'! '.site_phrase('something_is_wrong'));
+            redirect('home/shopping_cart', 'refresh');
+        
         }
     }
 
@@ -1203,5 +1198,171 @@ class Home extends CI_Controller
     {
         print_r($_GET);
         print_r($_POST);
+    }
+
+    // public function paymob_prepare()
+    // {
+    //     if ($this->session->userdata('user_login') != 1 && $payment_request != 'true')
+    //         redirect('home', 'refresh');
+
+
+    //     $total_price_of_checking_out = $this->session->userdata('total_price_of_checking_out');
+    //     $page_data['payment_request'] = $payment_request;
+    //     $page_data['user_details']    = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+    //     $page_data['amount_to_pay']   = $total_price_of_checking_out;
+    //     $this->load->view('payment/razorpay/paymob', $page_data);
+    // }
+    
+    public function paymob_checkout($payment_request = "only_for_mobile")
+    {
+        $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+        $overall_amount = (int) $this->session->userdata('total_price_of_checking_out') * 100;
+        $items = [];
+        $user_details = [
+                "apartment" => "NA", 
+                "email" => $user['email'], 
+                "floor" => "NA", 
+                "first_name" => $user['first_name'], 
+                "street" => "NA", 
+                "building" => "NA", 
+                "phone_number" => '01029912688', 
+                "postal_code" => "NA", 
+                "extra_description" => "NA",
+                "city" => "NA", 
+                "country" => "NA", 
+                "last_name" => $user['last_name'], 
+                "state" => "NA"
+        ];
+        
+        $items = json_encode($items);
+        $user_details = json_encode($user_details);
+        
+        $token = $this->paymob->get_api_token();
+        
+        $key_token = $token->token;
+        $res   = $this->paymob->order_registration($key_token, $overall_amount, $items, $user_details);
+        
+        $order_id = $res->id;
+        $final_res = $this->paymob->payment_key_request($key_token, $overall_amount, $order_id, $user_details);
+        // print_r(json_encode($final_res));
+        // return 0;
+        $payment_token = $final_res->token;
+        redirect("https://accept.paymob.com/api/acceptance/iframes/402235?payment_token=$payment_token");
+          
+        //print_r(json_encode($this->response));
+    }
+    
+    public function paymob_payment()
+    {
+        $paramList = $_GET;
+        $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+        $amount_paid = (int)$paramList["amount_cents"] / 100;
+        $status = $paramList["txn_response_code"];
+        $payment_request_mobile = 'false';
+        
+        if ($status == "APPROVED") { //APPROVED
+            
+            $user_id = $user['id'];
+            $this->crud_model->enrol_student($user_id);
+            $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $paramList["id"]);
+            $this->email_model->course_purchase_notification($user_id, 'paymob', $amount_paid);
+            $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
+            if ($payment_request_mobile == 'true') :
+                $course_id = $this->session->userdata('cart_items');
+                redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
+            else :
+                $this->session->set_userdata('cart_items', array());
+                redirect('home/my_courses', 'refresh');
+            endif;
+            
+        }else{
+            $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
+            redirect('home/shopping_cart', 'refresh');
+        }
+    }
+    
+    // public function aman_prepare()
+    // {
+    //     if ($this->session->userdata('user_login') != 1 && $payment_request != 'true')
+    //         redirect('home', 'refresh');
+
+
+    //     $total_price_of_checking_out  = $this->session->userdata('total_price_of_checking_out');
+    //     $page_data['payment_request'] = $payment_request;
+    //     $page_data['user_details']    = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+    //     $page_data['amount_to_pay']   = $total_price_of_checking_out;
+    //     $this->load->view('payment/razorpay/aman', $page_data);
+    // }
+    
+    public function aman_checkout($payment_request = "only_for_mobile")
+    {
+        $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+        $overall_amount = (int) $this->session->userdata('total_price_of_checking_out') * 100;
+        $items = [];
+        $user_details = [
+                "apartment" => "NA", 
+                "email" => $user['email'], 
+                "floor" => "NA", 
+                "first_name" => $user['first_name'], 
+                "street" => "NA", 
+                "building" => "NA", 
+                "phone_number" => '01029912688', 
+                "postal_code" => "NA", 
+                "extra_description" => "NA",
+                "city" => "NA", 
+                "country" => "NA", 
+                "last_name" => $user['last_name'], 
+                "state" => "NA"
+        ];
+        
+        $items = json_encode($items);
+        $user_details = json_encode($user_details);
+        
+        $token = $this->kiosk->get_api_token();
+        
+        $key_token = $token->token;
+        $res   = $this->kiosk->order_registration($key_token, $overall_amount, $items, $user_details);
+        
+        $order_id = $res->id;
+        $final_res = $this->kiosk->payment_key_request($key_token, $overall_amount, $order_id, $user_details);
+        // print_r(json_encode($final_res));
+        // return 0;
+        $payment_token = $final_res->token;
+        $data = $this->kiosk->kiosk_payment($payment_token);
+        //redirect("https://accept.paymob.com/api/acceptance/iframes/402235?payment_token=$payment_token");
+          
+        $this->session->set_userdata('ref', $data->data->bill_reference);
+        $course_id = $this->session->userdata('cart_items');
+        $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
+        $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+        $user_id = $user['id'];
+        redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
+        
+    }
+    
+    public function aman_payment()
+    {
+        $paramList = $_GET;
+        $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
+        $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
+        $status = $paramList["txn_response_code"];
+        $payment_request_mobile = 'true';
+        
+        if ($status == "APPROVED") { //APPROVED
+            
+            $user_id = $user['id'];
+            $this->crud_model->enrol_student($user_id);
+            $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $paramList["id"]);
+            $this->email_model->course_purchase_notification($user_id, 'paypal', $amount_paid);
+            $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
+            
+            $this->session->set_userdata('cart_items', array());
+            redirect('home/my_courses', 'refresh');
+        
+            
+        }else{
+            $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
+            redirect('home/shopping_cart', 'refresh');
+        }
     }
 }
