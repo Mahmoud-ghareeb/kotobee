@@ -9,7 +9,7 @@ class Home extends CI_Controller
         parent::__construct();
         // Your own constructor code
         $this->load->database();
-        $this->load->library('session');
+        $this->load->library('session', 'paymob', 'aman');
         // $this->load->library('stripe');
         /*cache control*/
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
@@ -356,7 +356,7 @@ class Home extends CI_Controller
     }
 
     // SHOW PAYPAL CHECKOUT PAGE
-    public function paypal_checkout($payment_request = "only_for_mobile")
+    public function paypal_checkout($payment_request = "forweb")
     {
         if ($this->session->userdata('user_login') != 1 && $payment_request != 'true')
             redirect('home', 'refresh');
@@ -1213,7 +1213,7 @@ class Home extends CI_Controller
     //     $this->load->view('payment/razorpay/paymob', $page_data);
     // }
     
-    public function paymob_checkout($payment_request = "only_for_mobile")
+    public function paymob_checkout($payment_request = "web")
     {
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $overall_amount = (int) $this->session->userdata('total_price_of_checking_out') * 100;
@@ -1294,7 +1294,7 @@ class Home extends CI_Controller
     //     $this->load->view('payment/razorpay/aman', $page_data);
     // }
     
-    public function aman_checkout($payment_request = "only_for_mobile")
+    public function aman_checkout($payment_request = "web")
     {
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $overall_amount = (int) $this->session->userdata('total_price_of_checking_out') * 100;
