@@ -3343,6 +3343,10 @@ class Crud_model extends CI_Model
         return $this->db->get('blogs');
     }
 
+    function get_all_books(){
+        return $this->db->get('course');
+    }
+
     function get_blogs($blog_id = ""){
         if($blog_id > 0){
             $this->db->where('blog_id', $blog_id);

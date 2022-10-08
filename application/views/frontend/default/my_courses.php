@@ -4,11 +4,16 @@
 <?php
     $my_courses = $this->user_model->my_courses()->result_array();
 
-    $categories = array();
-    foreach ($my_courses as $my_course) {
-        $course_details = $this->crud_model->get_course_by_id($my_course['course_id'])->row_array();
-        if (!in_array($course_details['category_id'], $categories)) {
-            array_push($categories, $course_details['category_id']);
+    if(!empty($my_courses)){
+
+        $my_courses = $this->crud_model->get_all_books()->result_array();
+        
+        $categories = array();
+        foreach ($my_courses as $my_course) {
+            $course_details = $this->crud_model->get_course_by_id($my_course['id'])->row_array();
+            if (!in_array($course_details['category_id'], $categories)) {
+                array_push($categories, $course_details['category_id']);
+            }
         }
     }
 ?>
