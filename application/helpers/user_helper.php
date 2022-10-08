@@ -39,7 +39,8 @@ if ( ! function_exists('is_purchased'))
 		$CI->load->library('session');
 		$CI->load->database();
 		if ($CI->session->userdata('user_login')) {
-			$enrolled_history = $CI->db->get_where('enrol' , array('user_id' => $CI->session->userdata('user_id'), 'course_id' => $course_id))->num_rows();
+			// $enrolled_history = $CI->db->get_where('enrol' , array('user_id' => $CI->session->userdata('user_id'), 'course_id' => $course_id))->num_rows();
+			$enrolled_history = $CI->db->get_where('enrol' , array('user_id' => $CI->session->userdata('user_id')))->num_rows();
 			if ($enrolled_history > 0) {
 				return true;
 			}else {
