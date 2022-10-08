@@ -1262,27 +1262,27 @@ class Home extends CI_Controller
         $status = $paramList["txn_response_code"];
         $payment_request_mobile = 'false';
         
-        echo $status;
+        // echo $status;
 
-        // if ($status == "BLOCKED") { //APPROVED
+        if ($status == "BLOCKED") { //APPROVED
             
-        //     $user_id = $user['id'];
-        //     $this->crud_model->enrol_student($user_id);
-        //     $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $paramList["id"]);
-        //     $this->email_model->course_purchase_notification($user_id, 'paymob', $amount_paid);
-        //     $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-        //     if ($payment_request_mobile == 'true') :
-        //         $course_id = $this->session->userdata('cart_items');
-        //         redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
-        //     else :
-        //         $this->session->set_userdata('cart_items', array());
-        //         redirect('home/my_courses', 'refresh');
-        //     endif;
+            $user_id = $user['id'];
+            $this->crud_model->enrol_student($user_id);
+            $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $paramList["id"]);
+            $this->email_model->course_purchase_notification($user_id, 'paymob', $amount_paid);
+            $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
+            if ($payment_request_mobile == 'true') :
+                $course_id = $this->session->userdata('cart_items');
+                redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
+            else :
+                $this->session->set_userdata('cart_items', array());
+                redirect('home/my_courses', 'refresh');
+            endif;
             
-        // }else{
-        //     $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
-        //     redirect('home/shopping_cart', 'refresh');
-        // }
+        }else{
+            $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
+            redirect('home/shopping_cart', 'refresh');
+        }
     }
     
     // public function aman_prepare()
