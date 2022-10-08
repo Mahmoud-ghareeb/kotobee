@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
 	<title><?php echo $page_title.' | '.get_settings('system_name'); ?></title>
 
@@ -17,10 +17,11 @@
 <body>
 	<?php
 		if($this->session->userdata('app_url')):
-			include "go_back_to_mobile_app.php";
+			//include "go_back_to_mobile_app.php";
 		endif;
+		
 		echo '<div class="container-fluid">';
-			include 'payment_gateway.php';
+			include $page_name . '.php';
 		echo '</div>';
 
 		include 'includes_bottom.php';
