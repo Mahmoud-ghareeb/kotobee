@@ -504,9 +504,9 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
               <?php else : ?>
                 <div class="buy-btns">
                   <?php if (in_array($course_details['id'], $this->session->userdata('cart_items'))) : ?>
-                    <button class="btn btn-buy-now active" type="button" id="<?php echo $course_details['id']; ?>" onclick="handleCartItems(this)"><?php echo site_phrase('added_to_cart'); ?></button>
+                    <!-- <button class="btn btn-buy-now active" type="button" id="<?php echo $course_details['id']; ?>" onclick="handleCartItems(this)"><?php echo site_phrase('added_to_cart'); ?></button> -->
                   <?php else : ?>
-                    <button class="btn btn-buy-now" type="button" id="<?php echo $course_details['id']; ?>" onclick="handleCartItems(this)"><?php echo site_phrase('add_to_cart'); ?></button>
+                    <!-- <button class="btn btn-buy-now" type="button" id="<?php echo $course_details['id']; ?>" onclick="handleCartItems(this)"><?php echo site_phrase('add_to_cart'); ?></button> -->
                   <?php endif; ?>
 
                    <button class="btn btn-buy" type="button" id="course_<?php echo $course_details['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
