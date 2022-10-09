@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php 
 
 	$lang = $this->session->userdata('language');

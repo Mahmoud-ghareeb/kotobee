@@ -1,3 +1,5 @@
+
+<?php session_start(); ?>
 <?php
     $system_name = $this->db->get_where('settings' , array('key'=>'system_name'))->row()->value;
     $system_title = $this->db->get_where('settings' , array('key'=>'system_title'))->row()->value;
