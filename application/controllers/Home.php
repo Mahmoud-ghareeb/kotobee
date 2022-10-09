@@ -44,7 +44,8 @@ class Home extends CI_Controller
 
     public function google_login()
  {
-  include_once APPPATH . "/vendor/autoload.php";
+  require_once APPPATH . "/vendor/autoload.php";
+//   require_once APPPATH . "/vendor/google/apiclient/src/Google/Client.php"
 
   $google_client = new Google_Client();
 
