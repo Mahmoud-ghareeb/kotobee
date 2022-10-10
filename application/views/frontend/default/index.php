@@ -20,7 +20,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, minimum-scale=0.86">
 	<meta name="author" content="<?php echo get_settings('author') ?>" />
-
+    <meta name="google-signin-client_id" content="268100085937-ej7qc7ll02di15570g29sh9tkvposl37.apps.googleusercontent.com">
 	<?php
 	$seo_pages = array('course_page');
 	if (in_array($page_name, $seo_pages)):

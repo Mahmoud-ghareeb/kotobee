@@ -45,39 +45,13 @@ class Home extends CI_Controller
 
     public function google_login()
  {
-  require_once APPPATH . "vendor/autoload.php";
 
-  $google_client = new Google_Client();
+    $first_name = $_POST['given_name'];
+    $last_name  = $_POST['family_name'];
+    $email      = $_POST['email'];
 
-  $google_client->setClientId('268100085937-ej7qc7ll02di15570g29sh9tkvposl37.apps.googleusercontent.com'); //Define your ClientID
-
-  $google_client->setClientSecret('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'); //Define your Client Secret Key
-
-  $google_client->setRedirectUri('https://www.kotobee.online/home/google_login'); //Define your Redirect Uri
-
-  $google_client->addScope('email');
-  $google_client->addScope('profile');
-
-  if(isset($_GET["code"]))
-  {
-   $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
-
-   if(!isset($token["error"]))
-   {
-    $google_client->setAccessToken($token['access_token']);
-
-    $this->session->set_userdata('access_token', $token['access_token']);
-
-    $google_service = new Google\Service\Oauth2($google_client);
-
-    $data = $google_service->userinfo;
-
-    if(isset($data['email'])){
-        if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-            $email = $data['email'];
-            $fb_user_id = $data['id'];
-            $first_name = $data['given_name'];
-            $last_name = $data['family_name'];
+    if(isset($email)){
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             
             $credential = array('email' => $email, 'status' => 1);
             $query = $this->db->get_where('users', $credential);
@@ -120,7 +94,7 @@ class Home extends CI_Controller
                     $this->user_model->set_login_userdata($row->id);
                 }else{
                     $this->session->set_flashdata('error_message', get_phrase('email_duplication'));
-                    redirect(site_url('home/login'), 'refresh');
+                    // redirect(site_url('home/login'), 'refresh');
                 }
             }
             
@@ -129,29 +103,13 @@ class Home extends CI_Controller
             if($this->session->userdata('url_history')){
                 redirect($this->session->userdata('url_history'), 'refresh');
             }
-            redirect(site_url(), 'refresh');
+            // redirect(site_url(), 'refresh');
         }else{
             $this->session->set_flashdata('error_message', get_phrase('invalid_email_address'));
-            redirect(site_url('home/login'), 'refresh');
         }
     }
-   }
-  }
-  $login_button = '';
-  if(!$this->session->userdata('access_token'))
-  {
-   $login_button = '<a href="'.$google_client->createAuthUrl().'"><img src="'.base_url().'asset/sign-in-with-google.png" /></a>';
-   $data['login_button'] = $login_button;
-   $data['page_name'] = 'login';
-   $data['page_title'] = site_phrase('login');
-   $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $data);
-  }
-  else
-  {
-   $data['page_name'] = 'login';
-   $data['page_title'] = site_phrase('login');
-   $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $data);
-  }
+
+    
  }
 
 

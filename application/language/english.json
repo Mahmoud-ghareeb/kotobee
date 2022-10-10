@@ -746,5 +746,6 @@
     "select_razorpay_currency": "Select razorpay currency",
     "theme_color": "Theme color",
     "please_make_sure_that": "Please make sure that",
-    "are_same": "Are same"
+    "are_same": "Are same",
+    "invalid_email_address": "Invalid email address"
 }

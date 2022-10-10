@@ -7,7 +7,7 @@
       <div class="row mb-5 mt-3">
         <div class="col-md-12 text-center">
           <h1 class="fw-700"><?php echo site_phrase('login'); ?></h1>
-          <p class="text-14px"><?php echo site_phrase('provide_your_valid_login_credentials'); ?></p>
+          <p class="text-14px d-none"><?php echo site_phrase('provide_your_valid_login_credentials'); ?></p>
         </div>
       </div>
       <div class="row">
@@ -18,7 +18,7 @@
           <div class="sign-up-form">
             <?php if(get_settings('fb_social_login')) include "facebook_login.php"; ?>
 
-            <form action="<?php echo site_url('login/validate_login/user'); ?>" method="post" id="sign_up">
+            <form class="d-none" action="<?php echo site_url('login/validate_login/user'); ?>" method="post" id="sign_up">
               <div class="form-group">
                 <label for="login-email"><?php echo site_phrase('email'); ?></label>
                 <div class="input-group" dir="ltr">
@@ -46,26 +46,54 @@
                 <button type="submit" class="btn red radius-10 mt-4 w-100"><?php echo site_phrase('login'); ?></button>
               </div>
 
-              <script src="https://accounts.google.com/gsi/client" async defer></script>
-              <div id="g_id_onload"
-                data-client_id="268100085937-ej7qc7ll02di15570g29sh9tkvposl37.apps.googleusercontent.com"
-                data-login_uri="https://kotobee.online/home/google_login"
-                data-auto_prompt="false">
-              </div>
-              <div class="g_id_signin"
-                data-type="standard"
-                data-size="large"
-                data-theme="outline"
-                data-text="sign_in_with"
-                data-shape="rectangular"
-                data-logo_alignment="left">
-              </div>
+              
 
               <div class="form-group mt-4 mb-0 text-center">
                 <?php echo site_phrase('do_not_have_an_account'); ?>?
                 <a class="text-15px fw-700" href="<?php echo site_url('home/sign_up') ?>"><?php echo site_phrase('sign_up'); ?></a>
               </div>
             </form>
+
+            <br />
+            <h2 align="center">Login using Google</h2>
+            <br />
+            <div class="panel panel-default">
+
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
+              <script>
+                function saveUserData(userData){
+                    var userD = JSON.parse(userData);
+                    $.post('<?php echo site_url("/home/google_login") ?>', { oauth_provider:'google', email: userD.email, given_name: userD.given_name, family_name: userD.family_name }, function( data ) {
+                    location.href = '<?php echo site_url(); ?>';
+                    });
+                }
+                function decodeJwtResponse(res){
+                  const tokenDecodablePart = res.split('.')[1];
+                  const decoded = atob(tokenDecodablePart, 'base64').toString();
+                  return decoded;
+                }
+                function handleCredentialResponse(res){
+                   console.log(res)
+                   const responsePayload = decodeJwtResponse(res.credential);
+                   saveUserData(responsePayload);
+                }
+              </script>
+               <div id="g_id_onload"
+                data-client_id="268100085937-ej7qc7ll02di15570g29sh9tkvposl37.apps.googleusercontent.com"
+                data-callback="handleCredentialResponse">
+              </div>
+              <div class="g_id_signin"
+                data-type="standard"
+                data-size="large"
+                data-theme="outline"
+                data-text="sign_in_with"
+                data-shape="circle"
+                data-width="auto"
+                data-logo_alignment="left"
+                style="width: fit-content;margin: 0px auto;">
+              </div>
+
+            </div>
 
           </div>
         </div>
