@@ -146,9 +146,9 @@
 
                 <?php else: ?>
                     <?php if ($lesson_details['attachment_type'] == 'iframe'): ?>
-                        <div class="embed-responsive embed-responsive-16by9" id="htmlTest">
-                          <!-- <iframe class="embed-responsive-item w-100" src="<?php echo $lesson_details['attachment']; ?>" style="height: 500px;" allowfullscreen></iframe> -->
-                        </div>
+                        <!-- <div class="embed-responsive embed-responsive-16by9" id="htmlTest"> -->
+                          <iframe class="embed-responsive-item w-100" src="<?php echo $lesson_details['attachment']; ?>" style="height: 500px;" allowfullscreen></iframe>
+                        <!-- </div> -->
                     <?php else: ?>
                         <div class="bg-white">
                             <?php if($lesson_details['attachment_type'] == 'img'):
