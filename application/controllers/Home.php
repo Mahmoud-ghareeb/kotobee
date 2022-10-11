@@ -1331,7 +1331,7 @@ class Home extends CI_Controller
         
         // echo $status;
 
-        if ($status == "BLOCKED") { //APPROVED
+        if ($status == "APPROVED") { //APPROVED
             
             $user_id = $user['id'];
             $this->crud_model->enrol_student($user_id);
