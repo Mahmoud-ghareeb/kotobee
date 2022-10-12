@@ -138,7 +138,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                   ?>
 
                   <div class="lecture-group-title clearfix" style="<?= $style; ?>" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $section['id']; ?>" aria-expanded="<?php if ($counter == 0) echo 'true'; ?>">
-                    <div class="title float-start">
+                    <div class="title">
                       <?php echo $section['title']; ?>
                     </div>
                     <div class="float-end">
