@@ -55,7 +55,7 @@ if (isset($sub_category_id)) {
                                         <div class="text-15px fw-700 d-flex">
                                             <input type="radio" id="category_all" name="sub_category" class="categories custom-radio" value="all" onclick="filter(this)" <?php if ($selected_category_id == 'all') echo 'checked'; ?>>
                                             <label for="category_all"><?php echo site_phrase('all_category'); ?></label>
-                                            <div class="ms-auto">(<?php echo $this->crud_model->get_active_course()->num_rows(); ?>)</div>
+                                            <div class="me-auto">(<?php echo $this->crud_model->get_active_course()->num_rows(); ?>)</div>
                                         </div>
                                     </li>
                                     <?php
@@ -67,15 +67,15 @@ if (isset($sub_category_id)) {
                                             <div class="text-15px fw-700 <?php if ($counter > $number_of_visible_categories) : ?> hidden-categories hidden <?php else: ?> d-flex<?php endif; ?>">
                                                 <input type="radio" id="category-<?php echo $category['id']; ?>" name="sub_category" class="categories custom-radio" value="<?php echo $category['slug']; ?>" onclick="filter(this)" <?php if ($selected_category_id == $category['id']) echo 'checked'; ?>>
                                                 <label for="category-<?php echo $category['id']; ?>"><?php echo $category['name']; ?></label>
-                                                <div class="ms-auto">(<?php echo $this->crud_model->get_active_course_by_category_id($category['id'], 'category_id')->num_rows(); ?>)</div>
+                                                <div class="me-auto">(<?php echo $this->crud_model->get_active_course_by_category_id($category['id'], 'category_id')->num_rows(); ?>)</div>
                                             </div>
                                         </li>
                                         <?php foreach ($this->crud_model->get_sub_categories($category['id']) as $sub_category) :?>
-                                            <li class="ms-3">
+                                            <li class="me-3">
                                                 <div class="<?php if ($counter > $number_of_visible_categories) : ?> hidden-categories hidden <?php else: ?> d-flex<?php endif; ?>">
                                                     <input type="radio" id="sub_category-<?php echo $sub_category['id']; ?>" name="sub_category" class="categories custom-radio" value="<?php echo $sub_category['slug']; ?>" onclick="filter(this)" <?php if ($selected_category_id == $sub_category['id']) echo 'checked'; ?>>
                                                     <label for="sub_category-<?php echo $sub_category['id']; ?>"><?php echo $sub_category['name']; ?></label>
-                                                    <div class="ms-auto">(<?php echo $this->crud_model->get_active_course_by_category_id($sub_category['id'], 'sub_category_id')->num_rows(); ?>)</div>
+                                                    <div class="me-auto">(<?php echo $this->crud_model->get_active_course_by_category_id($sub_category['id'], 'sub_category_id')->num_rows(); ?>)</div>
                                                 </div>
                                             </li>
                                             <?php $counter++;  ?>
