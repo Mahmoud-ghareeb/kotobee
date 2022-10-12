@@ -69,7 +69,7 @@ if (isset($sub_category_id)) {
                                                 <label for="category-<?php echo $category['id']; ?>"><?php echo $category['name']; ?></label>
                                                 <div class="me-auto">(<?php echo $this->crud_model->get_active_course_by_category_id($category['id'], 'category_id')->num_rows(); ?>)</div>
                                             </div>
-                                        </li> 
+                                        </li>
                                         <?php foreach ($this->crud_model->get_sub_categories($category['id']) as $sub_category) :?>
                                             <li class="me-3">
                                                 <div class="<?php if ($counter > $number_of_visible_categories) : ?> hidden-categories hidden <?php else: ?> d-flex<?php endif; ?>">
