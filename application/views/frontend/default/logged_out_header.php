@@ -1,4 +1,4 @@
-<section class="menu-area bg-white" dir="ltr">
+<section class="menu-area bg-white" style="direction: ltr;">
   <div class="container-xl">
     <nav class="navbar navbar-expand-lg bg-white">
 
