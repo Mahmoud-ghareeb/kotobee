@@ -108,7 +108,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
         <?php if ($course_details['course_type'] == 'general') : ?>
           <div class="course-curriculum-box">
             <div class="course-curriculum-title clearfix mt-5 mb-3">
-              <div class="title float-start"><?php echo site_phrase('curriculum_for_this_course'); ?></div>
+              <div class="title "><?php echo site_phrase('curriculum_for_this_course'); ?></div>
               <div class="float-end mt-2">
                 <span class="total-lectures">
                   <?php echo $this->crud_model->get_lessons('course', $course_details['id'])->num_rows() . ' ' . site_phrase('lessons'); ?>
