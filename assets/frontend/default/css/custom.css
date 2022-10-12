@@ -9,6 +9,11 @@ section{
     direction: rtl;
 }
 
+.breadcrumb{
+    direction: ltr;
+    width: fit-content;
+}
+
 .cropped-home-banner{
 	position: absolute;
     width: 0px;
