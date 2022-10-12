@@ -81,8 +81,8 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
           </div>
         </div>
 
-        <h4 class="py-3"><?php echo site_phrase('what_will_i_learn'); ?>?</h4>
-        <div class="what-you-get-box">
+        <h4 class="py-3 d-none"><?php echo site_phrase('what_will_i_learn'); ?>?</h4>
+        <div class="what-you-get-box d-none">
           <ul class="what-you-get__items">
             <?php foreach (json_decode($course_details['outcomes']) as $outcome) : ?>
               <?php if ($outcome != "") : ?>
@@ -145,7 +145,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                       <span class="total-lectures">
                         <?php echo $this->crud_model->get_lessons('section', $section['id'])->num_rows() . ' ' . site_phrase('lessons'); ?>
                       </span>
-                      <span class="total-time">
+                      <span class="total-time d-none">
                         <?php echo $this->crud_model->get_total_duration_of_lesson_by_section_id($section['id']); ?>
                       </span>
                     </div>
@@ -160,7 +160,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
                           <div class="lecture-info float-lg-end">
                             <?php if($lesson['is_free'] == 1): ?>
-                                <span class="lecture-preview" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
+                                <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
                                   <i class="fas fa-eye"></i>
                                   <?php echo site_phrase('preview'); ?>
                                 </span>
@@ -249,7 +249,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
           </div>
         </div>
 
-        <div class="about-instructor-box">
+        <div class="about-instructor-box d-none">
           <div class="about-instructor-title">
             <?php echo site_phrase('about_instructor'); ?>
           </div>
