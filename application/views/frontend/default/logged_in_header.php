@@ -1,7 +1,7 @@
 <?php
 $user_details = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
 ?>
-<section class="menu-area bg-white">
+<section class="menu-area bg-white" style="overflow: hidden;">
     <div class="container-xl">
         <nav class="navbar navbar-expand-lg navbar-light">
 
