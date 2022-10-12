@@ -1,4 +1,4 @@
-<section class="menu-area bg-white" style="overflow: hidden;">
+<section class="menu-area bg-white" dir="ltr">
   <div class="container-xl">
     <nav class="navbar navbar-expand-lg bg-white">
 
