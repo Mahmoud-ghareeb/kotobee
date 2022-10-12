@@ -30,7 +30,7 @@
 	<link name="favicon" type="image/x-icon" href="<?php echo base_url('uploads/system/'.get_frontend_settings('favicon')); ?>" rel="shortcut icon" />
 	<?php include 'includes_top.php';?>
 </head>
-<body class="gray-bg" dir="rtl">
+<body class="gray-bg">
 	<?php
 	include 'lessons.php';
 	include 'includes_bottom.php';

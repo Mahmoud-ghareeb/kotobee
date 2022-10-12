@@ -5,6 +5,10 @@ a{
     text-decoration: none;
 }
 
+section{
+    direction: ltr;
+}
+
 .cropped-home-banner{
 	position: absolute;
     width: 0px;

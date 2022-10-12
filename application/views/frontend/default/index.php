@@ -68,7 +68,7 @@
 		}
 	</style>
 </head>
-<body class="gray-bg" dir="rtl">
+<body class="gray-bg">
 	<?php
 	if(get_settings('course_accessibility') == 'publicly' || $this->session->userdata('user_id') > 0){
 		$course_accessibility = 1;
