@@ -25,7 +25,7 @@
           <?php if($course_accessibility): ?>
             <li class="mb-2"><a class="link-secondary footer-hover-link" href="<?php echo site_url('home/courses'); ?>"><?php echo site_phrase('all_courses'); ?></a></li>
           <?php endif; ?>
-          <li class="mb-2"><a class="link-secondary footer-hover-link" href="<?php echo site_url('home/sign_up'); ?>"><?php echo site_phrase('sign_up'); ?></a></li>
+          <li class="mb-2 d-none"><a class="link-secondary footer-hover-link" href="<?php echo site_url('home/sign_up'); ?>"><?php echo site_phrase('sign_up'); ?></a></li>
 
           <?php $custom_page_menus = $this->crud_model->get_custom_pages('', 'footer'); ?>
           <?php foreach($custom_page_menus->result_array() as $custom_page_menu): ?>
