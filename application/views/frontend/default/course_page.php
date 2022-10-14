@@ -530,7 +530,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                   <li><i class="far fa-file-video"></i><?php echo site_phrase('scorm_course'); ?></li>
                   <li class="d-none"><i class="fas fa-mobile-alt"></i><?php echo site_phrase('access_on_laptop_and_tv'); ?></li>
                 <?php endif; ?>
-                <li><i class="far fa-compass"></i><?php echo site_phrase('full_lifetime_access'); ?></li>
+                <li style="font-size: 17px;color: red;"><i class="far fa-compass"></i><?php echo site_phrase('full_lifetime_access'); ?></li>
                 <li class="text-center pt-3">
                   <a class="badge-sub-warning text-decoration-none fw-600 hover-shadow-1 d-inline-block" href="<?php echo site_url('home/compare?course-1=' . rawurlencode(slugify($course_details['title'])) . '&&course-id-1=' . $course_details['id']); ?>"><i class="fas fa-balance-scale"></i> <?php echo site_phrase('compare_this_course_with_other'); ?></a>
                 </li>
