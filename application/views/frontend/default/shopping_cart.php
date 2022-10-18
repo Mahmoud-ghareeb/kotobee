@@ -102,6 +102,7 @@
         var check = document.getElementById("phone-number").reportValidity()
         if(check){
 
+            alert(check);
             var couponCode = $("#coupon-code").val();
 
             url1 = '<?php echo site_url('home/handleCartItems'); ?>';
