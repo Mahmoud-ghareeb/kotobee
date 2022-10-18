@@ -84,8 +84,11 @@
         var check = document.getElementById("phone-number").reportValidity()
         if(check){
 
+            var url = '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>' + '&phone_number=' + phone_number;
+            alert(url)
+
             $.ajax({
-                url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>' + '&phone_number=' + phone_number,
+                url: url,
                 success: function(response) {
                     if (!response) {
                         window.location.replace("<?php echo site_url('login'); ?>");
@@ -98,7 +101,7 @@
                     }
                 }
             });
-            
+
         }
     }
 
