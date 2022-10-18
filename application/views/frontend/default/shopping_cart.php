@@ -98,46 +98,51 @@
     }
 
     function handleCartItems(elem) {
-        var couponCode = $("#coupon-code").val();
 
-        url1 = '<?php echo site_url('home/handleCartItems'); ?>';
-        url2 = '<?php echo site_url('home/refreshWishList'); ?>';
-        url3 = '<?php echo site_url('home/refreshShoppingCart'); ?>';
-        $.ajax({
-            url: url1,
-            type: 'POST',
-            data: {
-                course_id: elem.id
-            },
-            success: function(response) {
-                $('#cart_items').html(response);
-                if ($(elem).hasClass('addedToCart')) {
-                    $('.big-cart-button-' + elem.id).removeClass('addedToCart')
-                    $('.big-cart-button-' + elem.id).text("<?php echo site_phrase('add_to_cart'); ?>");
-                } else {
-                    $('.big-cart-button-' + elem.id).addClass('addedToCart')
-                    $('.big-cart-button-' + elem.id).text("<?php echo site_phrase('added_to_cart'); ?>");
+        var check = document.getElementById("phone-number").reportValidity()
+        if(check){
+
+            var couponCode = $("#coupon-code").val();
+
+            url1 = '<?php echo site_url('home/handleCartItems'); ?>';
+            url2 = '<?php echo site_url('home/refreshWishList'); ?>';
+            url3 = '<?php echo site_url('home/refreshShoppingCart'); ?>';
+            $.ajax({
+                url: url1,
+                type: 'POST',
+                data: {
+                    course_id: elem.id
+                },
+                success: function(response) {
+                    $('#cart_items').html(response);
+                    if ($(elem).hasClass('addedToCart')) {
+                        $('.big-cart-button-' + elem.id).removeClass('addedToCart')
+                        $('.big-cart-button-' + elem.id).text("<?php echo site_phrase('add_to_cart'); ?>");
+                    } else {
+                        $('.big-cart-button-' + elem.id).addClass('addedToCart')
+                        $('.big-cart-button-' + elem.id).text("<?php echo site_phrase('added_to_cart'); ?>");
+                    }
+                    $.ajax({
+                        url: url2,
+                        type: 'POST',
+                        success: function(response) {
+                            $('#wishlist_items').html(response);
+                        }
+                    });
+
+                    $.ajax({
+                        url: url3,
+                        type: 'POST',
+                        data: {
+                            couponCode: couponCode
+                        },
+                        success: function(response) {
+                            $('#cart_items_details').html(response);
+                        }
+                    });
                 }
-                $.ajax({
-                    url: url2,
-                    type: 'POST',
-                    success: function(response) {
-                        $('#wishlist_items').html(response);
-                    }
-                });
-
-                $.ajax({
-                    url: url3,
-                    type: 'POST',
-                    data: {
-                        couponCode: couponCode
-                    },
-                    success: function(response) {
-                        $('#cart_items_details').html(response);
-                    }
-                });
-            }
-        });
+            });
+        }
     }
 
     function applyCoupon() {
