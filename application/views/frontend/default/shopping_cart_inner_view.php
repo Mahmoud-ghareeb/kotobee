@@ -113,6 +113,10 @@
         <?php endif; ?>
 
         <div class="input-group marge-input-box mb-3">
+            <input type="text" class="form-control" placeholder="ادخل رقم التليفون" id="phone-number" required>
+        </div>
+
+        <div class="input-group marge-input-box mb-3">
             <input type="text" class="form-control" placeholder="<?php echo site_phrase('apply_coupon_code'); ?>" id="coupon-code">
             <div class="input-group-append">
                 <button class="btn" type="button" onclick="applyCoupon()">

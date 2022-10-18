@@ -1,7 +1,7 @@
 <section class="category-header-area" style="background-image: url('<?php echo base_url('uploads/system/shopping_cart.png'); ?>');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position-x: right;
+    background-position-x: left;
     background-color: #ec5252;">
     <div class="image-placeholder-1"></div>
     <div class="container-lg breadcrumb-container">
@@ -79,8 +79,10 @@
     }
 
     function handleCheckOut() {
+
+        var phone_number = $("phone-number").val();
         $.ajax({
-            url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>',
+            url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>' + '&phone_number=' + phone_number,
             success: function(response) {
                 if (!response) {
                     window.location.replace("<?php echo site_url('login'); ?>");

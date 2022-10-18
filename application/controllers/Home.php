@@ -406,6 +406,11 @@ class Home extends CI_Controller
 
     public function isLoggedIn()
     {
+        if(isset($_GET['phone_number']))
+        {
+            $this->session->set_userdata('phone_number', $_GET['phone_number']);
+        }
+
         if ($this->session->userdata('user_login') == 1){
             echo true;
         }
@@ -1287,6 +1292,7 @@ class Home extends CI_Controller
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $overall_amount = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $items = [];
+        $phone_number = $this->session->userdata('phone_number');
         $user_details = [
                 "apartment" => "NA", 
                 "email" => $user['email'], 
@@ -1294,7 +1300,7 @@ class Home extends CI_Controller
                 "first_name" => $user['first_name'], 
                 "street" => "NA", 
                 "building" => "NA", 
-                "phone_number" => '01029912688', 
+                "phone_number" => $phone_number, 
                 "postal_code" => "NA", 
                 "extra_description" => "NA",
                 "city" => "NA", 
