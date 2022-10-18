@@ -85,7 +85,6 @@
         if(check){
 
             var url = '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>' + '&phone_number=' + phone_number;
-            alert(url)
 
             $.ajax({
                 url: url,
