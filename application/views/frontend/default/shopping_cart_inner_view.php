@@ -113,7 +113,7 @@
         <?php endif; ?>
 
         <div class="input-group marge-input-box mb-3">
-            <input type="number" maxlength="15" minlength="11" class="form-control" placeholder="ادخل رقم الهاتف" id="phone-number" required>
+            <input type="number" min="11" class="form-control" placeholder="ادخل رقم الهاتف" id="phone-number" required>
         </div>
 
         <div class="input-group marge-input-box mb-3">
