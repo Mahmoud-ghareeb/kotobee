@@ -80,7 +80,7 @@
 
     function handleCheckOut() {
 
-        var phone_number = $("phone-number").val();
+        var phone_number = $("#phone-number").val();
         var check = document.getElementById("phone-number").reportValidity()
         if(check){
 
