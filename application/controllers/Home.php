@@ -408,7 +408,12 @@ class Home extends CI_Controller
     {
         if(isset($_GET['phone_number']))
         {
-            $this->session->set_userdata('phone_number', $_GET['phone_number']);
+            if(!empty($_GET['phone_number'])){
+                $this->session->set_userdata('phone_number', $_GET['phone_number']);
+            }else{
+                $this->session->set_userdata('phone_number', '01029912688');
+            }
+            
         }
 
         if ($this->session->userdata('user_login') == 1){
