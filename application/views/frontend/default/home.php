@@ -560,6 +560,9 @@
 </div>
 <?php } ?>
 <script type="text/javascript">
+    $(document).ready(function(){
+        alert('<?php echo $this->session->userdata('url_history'); ?>');
+    });
     function handleBuyNow(elem) {
 
         url1 = '<?php echo site_url('home/handleCartItemForBuyNowButton'); ?>';

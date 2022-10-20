@@ -748,7 +748,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
       url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>',
       success: function(response) {
         if (!response) {
-          alert('<?php echo $this->session->userdata('url_history'); ?>')
+          alert('<?php echo $this->session->userdata('url_history'); ?>');
           //window.location.replace("<?php echo site_url('login'); ?>");
         }else{
           var course_playing_url = "<?php echo site_url('home/lesson/'.slugify($course_details['title'])); ?>/"+course_id+'/'+lesson_id;
