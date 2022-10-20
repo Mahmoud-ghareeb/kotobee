@@ -255,7 +255,7 @@
                                                             echo site_phrase('add_to_cart');
                                                         ?>
                                                     </button>
-                                                    <button class="btn btn-buy" type="button" id="course_<?php echo $top_course['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
+                                                    <button class="btn red add-to-cart-btn" type="button" id="course_<?php echo $top_course['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
                                                 <?php endif; ?>
                                                 <button type="button" class="wishlist-btn <?php if ($this->crud_model->is_added_to_wishlist($top_course['id'])) echo 'active'; ?>" title="Add to wishlist" onclick="handleWishList(this)" id="<?php echo $top_course['id']; ?>"><i class="fas fa-heart"></i></button>
                                             <?php endif; ?>
@@ -427,7 +427,7 @@
                                                             echo site_phrase('add_to_cart');
                                                         ?>
                                                     </button>
-                                                    <button class="btn btn-buy" type="button" id="course_<?php echo $latest_course['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
+                                                    <button class="btn red add-to-cart-btn" type="button" id="course_<?php echo $latest_course['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
                                                 <?php endif; ?>
                                                 <button type="button" class="wishlist-btn <?php if ($this->crud_model->is_added_to_wishlist($latest_course['id'])) echo 'active'; ?>" title="Add to wishlist" onclick="handleWishList(this)" id="<?php echo $latest_course['id']; ?>"><i class="fas fa-heart"></i></button>
                                             <?php endif; ?>
