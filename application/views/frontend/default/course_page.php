@@ -744,30 +744,28 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
   });
 
   function go_course_playing_page(course_id, lesson_id){
-    <?php
-      if ($this->session->userdata('user_login') == 1){
-    ?>
-        var course_playing_url = "<?php echo site_url('home/lesson/'.slugify($course_details['title'])); ?>/"+course_id+'/'+lesson_id;
+    $.ajax({
+      url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>',
+      success: function(response) {
+        console.log(response);
+        if (!response) {
+          // alert('<?php echo $this->session->userdata('url_history'); ?>');
+          window.location.replace("<?php echo site_url('login'); ?>");
+        }else{
+          var course_playing_url = "<?php echo site_url('home/lesson/'.slugify($course_details['title'])); ?>/"+course_id+'/'+lesson_id;
 
-        $.ajax({
-          url: '<?php echo site_url('home/go_course_playing_page/'); ?>'+course_id+'/'+lesson_id,
-          type: 'POST',
-          success: function(response) {
-            console.log(response);
-            if(response == 1){
-              window.location.replace(course_playing_url);
+          $.ajax({
+            url: '<?php echo site_url('home/go_course_playing_page/'); ?>'+course_id+'/'+lesson_id,
+            type: 'POST',
+            success: function(response) {
+              console.log(response);
+              if(response == 1){
+                window.location.replace(course_playing_url);
+              }
             }
-          }
-        });
-    <?php
-      }else{
-        if(isset($_GET['url_history']) && !empty($_GET['url_history'])){
-          $this->session->set_userdata('url_history', base64_decode($_GET['url_history']));
+          });
         }
-    ?>
-        window.location.replace("<?php echo site_url('login'); ?>");
-    <?php
       }
-    ?>
+    });
   }
 </script>
