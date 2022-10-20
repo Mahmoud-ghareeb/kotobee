@@ -373,9 +373,11 @@ class Home extends CI_Controller
 
     public function handleCartItemForBuyNowButton()
     {
-        if (!$this->session->userdata('cart_items')) {
-            $this->session->set_userdata('cart_items', array());
-        }
+        // if (!$this->session->userdata('cart_items')) {
+        //     $this->session->set_userdata('cart_items', array());
+        // }
+
+        $this->session->set_userdata('cart_items', array());
 
         $course_id = $this->input->post('course_id');
         $previous_cart_items = $this->session->userdata('cart_items');
