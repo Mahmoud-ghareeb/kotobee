@@ -160,7 +160,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
                           <div class="lecture-info float-lg-end">
                             <?php if($lesson['is_free'] == 1): ?>
-                                <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
+                                <span class="lecture-preview " onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
                                   <i class="fas fa-eye"></i>
                                   <?php echo site_phrase('preview'); ?>
                                 </span>

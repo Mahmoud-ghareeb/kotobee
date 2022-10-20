@@ -561,7 +561,7 @@
 <?php } ?>
 <script type="text/javascript">
     // $(document).ready(function(){
-    //     alert('');
+    //     alert('<?php echo $this->session->userdata('url_history'); ?>');
     // });
     function handleBuyNow(elem) {
 
