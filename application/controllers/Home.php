@@ -654,7 +654,7 @@ class Home extends CI_Controller
         }
 
         // Check if the lesson contained course is purchased by the user
-        $lesson = $this->crud_model->get_lessons('lesson', $lesson_id);
+        $lesson = $this->crud_model->get_lessons('lesson', $lesson_id)->result_array();
         if($lesson['is_free'] != 1){
         if (isset($page_data['lesson_id']) && $page_data['lesson_id'] > 0 && $course_details['course_type'] == 'general') {
             if ($this->session->userdata('role_id') != 1 && !in_array($user_id, $course_instructor_ids)) {
