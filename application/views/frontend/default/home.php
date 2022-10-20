@@ -247,7 +247,7 @@
                                                     } ?>
                                                     <a href="<?php echo $url; ?>" class="btn green radius-10" onclick="handleEnrolledButton()"><?php echo site_phrase('get_enrolled'); ?></a>
                                                 <?php else : ?>
-                                                    <button type="button" class="btn red add-to-cart-btn <?php if (in_array($top_course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $top_course['id']; ?>" id="<?php echo $top_course['id']; ?>" onclick="handleCartItems(this)">
+                                                    <button type="button" class="btn d-none red add-to-cart-btn <?php if (in_array($top_course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $top_course['id']; ?>" id="<?php echo $top_course['id']; ?>" onclick="handleCartItems(this)">
                                                         <?php
                                                         if (in_array($top_course['id'], $cart_items))
                                                             echo site_phrase('added_to_cart');
@@ -255,6 +255,7 @@
                                                             echo site_phrase('add_to_cart');
                                                         ?>
                                                     </button>
+                                                    <button class="btn btn-buy" type="button" id="course_<?php echo $top_course['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
                                                 <?php endif; ?>
                                                 <button type="button" class="wishlist-btn <?php if ($this->crud_model->is_added_to_wishlist($top_course['id'])) echo 'active'; ?>" title="Add to wishlist" onclick="handleWishList(this)" id="<?php echo $top_course['id']; ?>"><i class="fas fa-heart"></i></button>
                                             <?php endif; ?>
@@ -558,6 +559,39 @@
 </div>
 <?php } ?>
 <script type="text/javascript">
+    function handleBuyNow(elem) {
+
+        url1 = '<?php echo site_url('home/handleCartItemForBuyNowButton'); ?>';
+        url2 = '<?php echo site_url('home/refreshWishList'); ?>';
+        urlToRedirect = '<?php echo site_url('home/shopping_cart'); ?>';
+        var explodedArray = elem.id.split("_");
+        var course_id = explodedArray[1];
+
+        $.ajax({
+        url: url1,
+        type: 'POST',
+        data: {
+            course_id: course_id
+        },
+        success: function(response) {
+            $('#cart_items').html(response);
+            $.ajax({
+            url: url2,
+            type: 'POST',
+            success: function(response) {
+                $('#wishlist_items').html(response);
+                toastr.success('<?php echo site_phrase('please_wait') . '....'; ?>');
+                setTimeout(
+                function() {
+                    window.location.replace(urlToRedirect);
+                }, 1000);
+            }
+            });
+        }
+        });
+
+    }
+    
     function handleWishList(elem) {
 
         $.ajax({
