@@ -3290,7 +3290,7 @@ section.cart-list-area {
     -ms-flex: 0 0 53%;
     flex: 0 0 53%;
     max-width: 53%;
-    padding-left: 10px;
+    padding-right: 10px;
 }
 .cart-course-wrapper .details .name {
     display: block!important;
