@@ -64,7 +64,13 @@
                 function saveUserData(userData){
                     var userD = JSON.parse(userData);
                     $.post('<?php echo site_url("/home/google_login") ?>', { oauth_provider:'google', email: userD.email, given_name: userD.given_name, family_name: userD.family_name }, function( data ) {
-                    location.href = '<?php echo site_url(); ?>';
+                        location.href = '<?php 
+                                          if($this->session->userdata('url_history')){
+                                            echo $this->session->userdata('url_history');
+                                          }else{
+                                            echo site_url();
+                                          }
+                                        ?>';
                     });
                 }
                 function decodeJwtResponse(res){
