@@ -61,6 +61,7 @@ class Home extends CI_Controller
                 // For device login tracker
                 $this->user_model->new_device_login_tracker($row->id);
                 $this->user_model->set_login_userdata($row->id);
+                
             }else{
                 $data['first_name'] = $first_name;
                 $data['last_name']  = $last_name;
