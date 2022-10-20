@@ -160,7 +160,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
                           <div class="lecture-info float-lg-end">
                             <?php if($lesson['is_free'] == 1): ?>
-                                <span class="lecture-preview" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
+                                <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
                                   <i class="fas fa-eye"></i>
                                   <?php echo site_phrase('preview'); ?>
                                 </span>
@@ -750,7 +750,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
         var course_playing_url = "<?php echo site_url('home/lesson/'.slugify($course_details['title'])); ?>/"+course_id+'/'+lesson_id;
 
         $.ajax({
-          url: '<?php echo site_url('home/go_course_playing_page/'); ?>'+course_id,
+          url: '<?php echo site_url('home/go_course_playing_page/'); ?>'+course_id+'/'+lesson_id,
           type: 'POST',
           success: function(response) {
             console.log(response);

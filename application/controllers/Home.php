@@ -1219,15 +1219,21 @@ class Home extends CI_Controller
         endif;
     }
 
-    function go_course_playing_page($course_id = ""){
-        $this->db->where('user_id', $this->session->userdata('user_id'));
-        // $this->db->where('course_id', $course_id);
-        $row = $this->db->get('enrol');
-        $course_instructor_ids = explode(',', $this->crud_model->get_course_by_id($course_id)->row('user_id'));
-        if($this->session->userdata('role_id') == 1 || in_array($this->session->userdata('user_id'), $course_instructor_ids) || $row->num_rows() > 0){
+    function go_course_playing_page($course_id = "",$lesson_id = ""){
+        $page_data['lesson'] = $this->crud_model->get_free_lessons($lesson_id);
+        if(!empty($page_data['lesson'])){
             echo 1;
         }else{
-            echo 0;
+            $this->db->where('user_id', $this->session->userdata('user_id'));
+            // $this->db->where('course_id', $course_id);
+            $row = $this->db->get('enrol');
+            $course_instructor_ids = explode(',', $this->crud_model->get_course_by_id($course_id)->row('user_id'));
+            if($this->session->userdata('role_id') == 1 || in_array($this->session->userdata('user_id'), $course_instructor_ids) || $row->num_rows() > 0){
+                echo 1;
+            }else{
+                echo 0;
+            }
+
         }
 
     }
