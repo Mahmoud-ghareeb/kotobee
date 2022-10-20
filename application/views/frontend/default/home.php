@@ -419,7 +419,7 @@
                                                     } ?>
                                                     <a href="<?php echo $url; ?>" class="btn green radius-10" onclick="handleEnrolledButton()"><?php echo site_phrase('get_enrolled'); ?></a>
                                                 <?php else : ?>
-                                                    <button type="button" class="btn red add-to-cart-btn <?php if (in_array($latest_course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $latest_course['id']; ?>" id="<?php echo $latest_course['id']; ?>" onclick="handleCartItems(this)">
+                                                    <button type="button" class="btn red d-none add-to-cart-btn <?php if (in_array($latest_course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $latest_course['id']; ?>" id="<?php echo $latest_course['id']; ?>" onclick="handleCartItems(this)">
                                                         <?php
                                                         if (in_array($latest_course['id'], $cart_items))
                                                             echo site_phrase('added_to_cart');
@@ -427,6 +427,7 @@
                                                             echo site_phrase('add_to_cart');
                                                         ?>
                                                     </button>
+                                                    <button class="btn btn-buy" type="button" id="course_<?php echo $latest_course['id']; ?>" onclick="handleBuyNow(this)"><?php echo site_phrase('buy_now'); ?></button>
                                                 <?php endif; ?>
                                                 <button type="button" class="wishlist-btn <?php if ($this->crud_model->is_added_to_wishlist($latest_course['id'])) echo 'active'; ?>" title="Add to wishlist" onclick="handleWishList(this)" id="<?php echo $latest_course['id']; ?>"><i class="fas fa-heart"></i></button>
                                             <?php endif; ?>
@@ -591,7 +592,7 @@
         });
 
     }
-    
+
     function handleWishList(elem) {
 
         $.ajax({
