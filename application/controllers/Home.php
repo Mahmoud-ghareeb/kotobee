@@ -654,26 +654,26 @@ class Home extends CI_Controller
         }
 
         // Check if the lesson contained course is purchased by the user
-        // $lesson = $this->crud_model->get_lessons('lesson', $lesson_id)->result_array();
-        // if($lesson[0]['is_free'] != 1){
-        if (isset($page_data['lesson_id']) && $page_data['lesson_id'] > 0 && $course_details['course_type'] == 'general') {
-            if ($this->session->userdata('role_id') != 1 && !in_array($user_id, $course_instructor_ids)) {
+        $lesson = $this->crud_model->get_lessons('lesson', $lesson_id)->result_array();
+        if($lesson[0]['is_free'] != 1){
+            if (isset($page_data['lesson_id']) && $page_data['lesson_id'] > 0 && $course_details['course_type'] == 'general') {
+                if ($this->session->userdata('role_id') != 1 && !in_array($user_id, $course_instructor_ids)) {
+                    if (!is_purchased($course_id)) {
+                        redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
+                    }
+                }
+            } else if ($course_details['course_type'] == 'scorm' && $scorm_course_data->num_rows() > 0) {
+                if ($this->session->userdata('role_id') != 1 && !in_array($user_id, $course_instructor_ids)) {
+                    if (!is_purchased($course_id)) {
+                        redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
+                    }
+                }
+            } else {
                 if (!is_purchased($course_id)) {
                     redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
                 }
-            }
-        } else if ($course_details['course_type'] == 'scorm' && $scorm_course_data->num_rows() > 0) {
-            if ($this->session->userdata('role_id') != 1 && !in_array($user_id, $course_instructor_ids)) {
-                if (!is_purchased($course_id)) {
-                    redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
-                }
-            }
-        } else {
-            if (!is_purchased($course_id)) {
-                redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_details['id']), 'refresh');
             }
         }
-        //}
 
         $page_data['course_details']  = $course_details;
         $page_data['drip_content_settings']  = json_decode(get_settings('drip_content_settings'), true);
