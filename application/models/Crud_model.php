@@ -1864,15 +1864,16 @@ class Crud_model extends CI_Model
     {
         $course_details = $this->get_course_by_id($course_id)->row_array();
         if ($course_details['is_free_course'] == 1) {
-            $data['course_id'] = $course_id;
-            $data['user_id']   = $user_id;
-            if ($this->db->get_where('enrol', $data)->num_rows() > 0) {
-                $this->session->set_flashdata('error_message', get_phrase('student_has_already_been_enrolled_to_this_course'));
-            } else {
-                $data['date_added'] = strtotime(date('D, d-M-Y'));
-                $this->db->insert('enrol', $data);
-                $this->session->set_flashdata('flash_message', get_phrase('successfully_enrolled'));
-            }
+            // $data['course_id'] = $course_id;
+            // $data['user_id']   = $user_id;
+            // if ($this->db->get_where('enrol', $data)->num_rows() > 0) {
+            //     $this->session->set_flashdata('error_message', get_phrase('student_has_already_been_enrolled_to_this_course'));
+            // } else {
+            //     $data['date_added'] = strtotime(date('D, d-M-Y'));
+            //     $this->db->insert('enrol', $data);
+            //     $this->session->set_flashdata('flash_message', get_phrase('successfully_enrolled'));
+            // }
+            $this->session->set_flashdata('error_message', 'not for enroll');
         } else {
             $this->session->set_flashdata('error_message', get_phrase('this_course_is_not_free_at_all'));
             redirect(site_url('home/course/' . slugify($course_details['title']) . '/' . $course_id), 'refresh');

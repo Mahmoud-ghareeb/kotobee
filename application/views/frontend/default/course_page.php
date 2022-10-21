@@ -160,7 +160,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
 
                           <div class="lecture-info float-lg-end">
                             <?php if($lesson['is_free'] == 1): ?>
-                                <span class="lecture-preview " onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
+                                <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
                                   <i class="fas fa-eye"></i>
                                   <?php echo site_phrase('preview'); ?>
                                 </span>
@@ -494,14 +494,14 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
               </div>
 
               <?php if ($course_details['is_free_course'] == 1) : ?>
-                <div class="buy-btns">
-                  <?php if ($this->session->userdata('user_login') != 1) : ?>
-                    <a href="javascript:;" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php echo site_phrase('get_enrolled'); ?></a>
-                  <?php else : ?>
-                    <a href="<?php echo site_url('home/get_enrolled_to_free_course/' . $course_details['id']); ?>" class="btn btn-buy-now"><?php echo site_phrase('get_enrolled'); ?></a>
-                  <?php endif; ?>
-                </div>
-              <?php else : ?>
+                <!-- <div class="buy-btns">
+                  <?php //if ($this->session->userdata('user_login') != 1) : ?>
+                    <a href="javascript:;" class="btn btn-buy-now" onclick="handleEnrolledButton()"><?php //echo site_phrase('get_enrolled'); ?></a>
+                  <?php //else : ?>
+                    <a href="<?php //echo site_url('home/get_enrolled_to_free_course/' . $course_details['id']); ?>" class="btn btn-buy-now"><?php //echo site_phrase('get_enrolled'); ?></a>
+                  <?php //endif; ?>
+                </div> -->
+              <?php //else : ?>
                 <div class="buy-btns">
                   <?php if (in_array($course_details['id'], $this->session->userdata('cart_items'))) : ?>
                     <!-- <button class="btn btn-buy-now active" type="button" id="<?php echo $course_details['id']; ?>" onclick="handleCartItems(this)"><?php echo site_phrase('added_to_cart'); ?></button> -->

@@ -58,7 +58,7 @@ $check_course_enrolled = $this->crud_model->check_course_enrolled($cart_item, $u
 									</div>
 								<?php endif; ?>
 							<?php else : ?>
-								<button class="btn btn-lg w-100 float-right" onclick="free_course_enrolled()" style="height: 60px;"><?php echo get_phrase('get_enrolled'); ?></button>
+								<!-- <button class="btn btn-lg w-100 float-right" onclick="free_course_enrolled()" style="height: 60px;"><?php //echo get_phrase('get_enrolled'); ?></button> -->
 							<?php endif; ?>
 						<?php else : ?>
 							<?php if ($check_course_enrolled > 0) : ?>
