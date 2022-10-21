@@ -1222,7 +1222,7 @@ class Home extends CI_Controller
     }
 
     function go_course_playing_page($course_id = "",$lesson_id = ""){
-        
+
         $lesson = $this->crud_model->get_lessons('lesson', $lesson_id)->result_array();
         if($lesson[0]['is_free'] == 1){
             echo 1;
@@ -1234,6 +1234,7 @@ class Home extends CI_Controller
             if($this->session->userdata('role_id') == 1 || in_array($this->session->userdata('user_id'), $course_instructor_ids) || $row->num_rows() > 0){
                 echo 1;
             }else{
+                $this->session->set_flashdata('flash_message', 'يجب ان تشتري الكتاب لتعرض هذا المحتوي');
                 echo 0;
             }
 
