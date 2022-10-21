@@ -1234,7 +1234,7 @@ class Home extends CI_Controller
             if($this->session->userdata('role_id') == 1 || in_array($this->session->userdata('user_id'), $course_instructor_ids) || $row->num_rows() > 0){
                 echo 1;
             }else{
-                $this->session->set_flashdata('flash_message', 'يجب ان تشتري الكتاب لتعرض هذا المحتوي');
+                $this->session->set_flashdata('error_message', 'يجب ان تشتري الكتاب لتعرض هذا المحتوي');
                 echo 0;
             }
 
