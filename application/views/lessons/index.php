@@ -33,9 +33,9 @@
 <body class="gray-bg">
 	<?php
 	if ($this->session->userdata('user_login')) {
-		include '../frontend/default/logged_in_header.php';
+		include 'logged_in_header.php';
 	}else {
-		include '../frontend/default/logged_out_header.php';
+		include 'logged_out_header.php';
 	}
 	include 'lessons.php';
 	include 'includes_bottom.php';
