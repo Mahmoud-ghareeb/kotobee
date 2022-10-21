@@ -1222,8 +1222,9 @@ class Home extends CI_Controller
     }
 
     function go_course_playing_page($course_id = "",$lesson_id = ""){
-        $page_data['lesson'] = $this->crud_model->get_free_lessons($lesson_id);
-        if(!empty($page_data['lesson'])){
+        
+        $lesson = $this->crud_model->get_lessons('lesson', $lesson_id)->result_array();
+        if($lesson[0]['is_free'] == 1){
             echo 1;
         }else{
             $this->db->where('user_id', $this->session->userdata('user_id'));
