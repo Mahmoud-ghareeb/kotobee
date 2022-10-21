@@ -761,6 +761,8 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
               console.log(response);
               if(response == 1){
                 window.location.replace(course_playing_url);
+              }else{
+                toastr.error(JSON.parse(response));
               }
             }
           });
