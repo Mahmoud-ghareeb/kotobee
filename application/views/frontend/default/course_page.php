@@ -501,7 +501,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                     <a href="<?php //echo site_url('home/get_enrolled_to_free_course/' . $course_details['id']); ?>" class="btn btn-buy-now"><?php //echo site_phrase('get_enrolled'); ?></a>
                   <?php //endif; ?>
                 </div> -->
-              <?php //else : ?>
+              <?php else : ?>
                 <div class="buy-btns">
                   <?php if (in_array($course_details['id'], $this->session->userdata('cart_items'))) : ?>
                     <!-- <button class="btn btn-buy-now active" type="button" id="<?php echo $course_details['id']; ?>" onclick="handleCartItems(this)"><?php echo site_phrase('added_to_cart'); ?></button> -->
