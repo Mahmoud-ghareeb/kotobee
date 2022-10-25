@@ -1371,14 +1371,14 @@ class Home extends CI_Controller
         $amount_paid = (int)$paramList["amount_cents"] / 100;
         $status = $paramList["txn_response_code"];
         $payment_request_mobile = 'false';
-        
+        $trans_id = $paramList["id"];
         // echo $status;
 
         if ($status == "APPROVED") { //APPROVED
             
             $user_id = $user['id'];
             $this->crud_model->enrol_student($user_id);
-            $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $paramList["id"]);
+            $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $trans_id);
             $this->email_model->course_purchase_notification($user_id, 'paymob', $amount_paid);
             $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
             if ($payment_request_mobile == 'true') :
@@ -1445,12 +1445,13 @@ class Home extends CI_Controller
         $payment_token = $final_res->token;
         $data = $this->kiosk->kiosk_payment($payment_token);
         //redirect("https://accept.paymob.com/api/acceptance/iframes/402235?payment_token=$payment_token");
-          
-        $this->session->set_userdata('ref', $data->data->bill_reference);
+        $refrence_id = $data->data->bill_reference;
+        $this->session->set_userdata('ref', $refrence_id);
         $course_id = $this->session->userdata('cart_items');
         $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $user_id = $user['id'];
+        $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $refrence_id);
         redirect('home/payment_success/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
         
     }
@@ -1458,22 +1459,18 @@ class Home extends CI_Controller
     public function aman_payment()
     {
         $paramList = $_GET;
-        $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
-        $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $status = $paramList["txn_response_code"];
         $payment_request_mobile = 'true';
         
         if ($status == "APPROVED") { //APPROVED
             
-            $user_id = $user['id'];
+            $trans_id = $paramList["id"];
+            $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
+            $user_id = $course['user_id'];
             $this->crud_model->enrol_student($user_id);
-            $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $paramList["id"]);
-            $this->email_model->course_purchase_notification($user_id, 'paypal', $amount_paid);
             $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-            
             $this->session->set_userdata('cart_items', array());
             redirect('home/my_courses', 'refresh');
-        
             
         }else{
             $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));

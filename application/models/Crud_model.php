@@ -1898,7 +1898,8 @@ class Crud_model extends CI_Model
                 //param1 payment keys
                 $data['transaction_id'] = $param1;
             }
-
+            
+            $data['transaction_id'] = $param1;
             $data['user_id'] = $user_id;
             $data['payment_type'] = $method;
             $data['course_id'] = $purchased_course;
