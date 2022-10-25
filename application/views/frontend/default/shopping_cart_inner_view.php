@@ -116,7 +116,7 @@
             <input type="number" class="form-control" placeholder="ادخل رقم الهاتف" id="phone-number" required min="11">
         </div>
 
-        <div class="input-group marge-input-box mb-3">
+        <div class="input-group marge-input-box mb-3 d-none">
             <input type="text" class="form-control" placeholder="<?php echo site_phrase('apply_coupon_code'); ?>" id="coupon-code">
             <div class="input-group-append">
                 <button class="btn" type="button" onclick="applyCoupon()">
