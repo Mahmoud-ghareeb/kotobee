@@ -68,9 +68,7 @@
         <label class="custom-control-label" for="image"><?php echo get_phrase('image_file'); ?></label>
     </div> -->
 
-    <?php include "book_type_lesson_add.php" ?>
-
-    <div class="custom-control custom-radio d-none">
+    <div class="custom-control custom-radio">
         <input type="radio" id="iframe" name="lesson_type" class="custom-control-input" value="iframe" checked>
         <label class="custom-control-label" for="iframe"><?php echo get_phrase('iframe_embed'); ?></label>
     </div>
