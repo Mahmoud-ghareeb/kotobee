@@ -275,7 +275,7 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col">
-                    <h3 class="course-carousel-title mb-4"><?php echo site_phrase('top') . ' 10 ' . site_phrase('latest_courses'); ?></h3>
+                    <h3 class="course-carousel-title mb-4 d-none"><?php echo site_phrase('top') . ' 10 ' . site_phrase('latest_courses'); ?></h3>
 
                     <!-- page loader -->
                     <div class="animated-loader"><div class="spinner-border text-secondary" role="status"></div></div>
