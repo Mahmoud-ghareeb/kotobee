@@ -1446,7 +1446,10 @@ class Home extends CI_Controller
         $course_id = $this->session->userdata('cart_items');
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $user_id = $user['id'];
-        $this->crud_model->course_purchase($user_id, 'aman', $overall_amount, $refrence_id);
+        $course = $this->crud_model->get_payment_details_by_transaction_id($refrence_id);
+        if(empty($course)){
+            $this->crud_model->course_purchase($user_id, 'aman', $overall_amount, $refrence_id);
+        }
         $this->session->unset_userdata('applied_coupon');
         
         redirect('home/payment_success/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
