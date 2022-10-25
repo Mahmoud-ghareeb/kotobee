@@ -1420,8 +1420,8 @@ class Home extends CI_Controller
         
         $order_id = $res->id;
         $final_res = $this->kiosk->payment_key_request($key_token, $overall_amount, $order_id, $user_details);
-         print_r(json_encode($final_res));
-         return 0;
+        // print_r(json_encode($final_res));
+        // return 0;
         $payment_token = $final_res->token;
         $data = $this->kiosk->kiosk_payment($payment_token);
         //redirect("https://accept.paymob.com/api/acceptance/iframes/402235?payment_token=$payment_token");
