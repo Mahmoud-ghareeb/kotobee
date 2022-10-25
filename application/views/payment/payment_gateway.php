@@ -217,7 +217,7 @@ $total_price_of_checking_out = $this->session->userdata('total_price_of_checking
         <div></div>
     </div>
 </div>
-<div class="container">
+<div class="container" style="margin-top: 45px;">
 	<div class="row justify-content-center mb-5">
 		<div class="col-md-8">
 			<div class="row">
