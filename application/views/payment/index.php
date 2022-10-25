@@ -20,11 +20,11 @@
 		if($this->session->userdata('app_url')):
 			include "go_back_to_mobile_app.php";
 		endif;
-
+		echo $_SERVER['DOCUMENT_ROOT'] . '../frontend/default/logged_in_header.php';
 		if ($this->session->userdata('user_login')) {
-			include '../frontend/default/logged_in_header.php';
+			include $_SERVER['DOCUMENT_ROOT'] . '../frontend/default/logged_in_header.php';
 		}else {
-			include '../frontend/default/logged_out_header.php';
+			include $_SERVER['DOCUMENT_ROOT'] . '../frontend/default/logged_out_header.php';
 		}
 
 		echo '<div class="container-fluid">';
