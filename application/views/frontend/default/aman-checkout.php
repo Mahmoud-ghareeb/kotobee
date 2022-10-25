@@ -49,7 +49,7 @@ $this_mobile_view = 'false';
                                 <i class="dripicons-checkmark mr-2"></i><?php echo get_phrase('an_error_occurred'); ?>.
                             </div>
                         <?php elseif ($enroll_type == 'aman') : ?>
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-success" style="font-size: 23px;" role="alert">
                                 <i class="dripicons-checkmark mr-2"></i> <?php echo get_phrase('من فضلك قم بالدفع علي هذا الرقم المرجعي من اي منفذ امان'); ?><strong><?php echo " " . $this->session->userdata('ref') ?></strong>.
                             </div>
                         <?php else : ?>
