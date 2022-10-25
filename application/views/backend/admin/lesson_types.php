@@ -28,10 +28,11 @@
 <h5 class="header-title mt-5 mt-sm-0"><?php echo get_phrase('select_book_to upload') ?></h5>
 
 <div class="mt-3">
-    <!-- <div class="custom-control custom-radio">
+    <div class="custom-control custom-radio">
         <input type="radio" id="youtube" name="lesson_type" class="custom-control-input" value="youtube" <?php if($selected_lesson == 'youtube') echo 'checked'; ?>>
         <label class="custom-control-label" for="youtube">YouTube <?php echo get_phrase('video'); ?></label>
     </div>
+    <!-- 
     <div class="custom-control custom-radio">
         <input type="radio" id="vimeo" name="lesson_type" class="custom-control-input" value="vimeo" <?php if($selected_lesson == 'vimeo') echo 'checked'; ?>>
         <label class="custom-control-label" for="vimeo">Vimeo <?php echo get_phrase('video'); ?></label>
