@@ -1212,6 +1212,26 @@ class Home extends CI_Controller
         endif;
     }
 
+    public function payment_success($course_id = "", $user_id = "", $enroll_type = "")
+    {
+        if ($course_id > 0 && $user_id > 0) :
+            $page_data['cart_item'] = $course_id;
+            $page_data['user_id'] = $user_id;
+            $page_data['is_login_now'] = 1;
+            $page_data['enroll_type'] = $enroll_type;
+            $page_data['page_name'] = 'aman-checkout';
+
+            $this->session->unset_userdata('user_id');
+            $this->session->unset_userdata('role_id');
+            $this->session->unset_userdata('role');
+            $this->session->unset_userdata('name');
+            $this->session->unset_userdata('user_login');
+            $this->session->unset_userdata('cart_items');
+
+            $this->load->view('frontend/'.get_frontend_settings('theme') . '/index', $page_data);
+        endif;
+    }
+
     //FOR MOBILE
     public function payment_gateway_mobile($course_id = "", $user_id = "")
     {
@@ -1431,7 +1451,7 @@ class Home extends CI_Controller
         $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $user_id = $user['id'];
-        redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
+        redirect('home/payment_success/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
         
     }
     
