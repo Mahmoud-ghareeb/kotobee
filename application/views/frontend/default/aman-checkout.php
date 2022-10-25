@@ -10,15 +10,11 @@ $this_mobile_view = 'false';
 	</div>
 	<div class="col-12">
 		<div class="details">
-			<a href="javascript:void(0)">
+			<a href="javascript:void(0)" style="width: fit-content;margin: -14px auto 0px;display: block;">
 				<h4><?php echo $course_details['title']; ?></h4>
 			</a>
 			<div class="row mt-1">
-				<div class="col-4 text-secondary">
-					<?php echo get_phrase('by'); ?>
-					<span class="instructor-name"><?php echo $instructor_details['first_name'] . ' ' . $instructor_details['last_name']; ?></span>
-				</div>
-				<div class="col-8 cart-course-wrapper p-0">
+				<div class="col-12 cart-course-wrapper p-0">
 					<?php if ($course_details['is_free_course'] == 1) : ?>
 						<?php $total_price = 0; ?>
 						<?php $this->session->set_userdata('total_price_of_checking_out', $total_price); ?>
