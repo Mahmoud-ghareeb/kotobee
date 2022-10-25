@@ -4,7 +4,7 @@ $course_details = $this->crud_model->get_course_by_id($cart_item)->row_array();
 $instructor_details = $this->user_model->get_all_user($course_details['user_id'])->row_array();
 $this_mobile_view = 'false';
 ?>
-<div class="row px-1 mb-5">
+<div class="row px-1 mb-5" dir="rtl">
 	<div class="col-12">
 		<img src="<?php echo $this->crud_model->get_course_thumbnail_url($cart_item); ?>" alt="" class="img-fluid" style="width:fit-content;display:block;margin:28px auto;">
 	</div>
