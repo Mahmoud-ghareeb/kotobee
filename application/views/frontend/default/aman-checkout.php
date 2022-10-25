@@ -14,18 +14,18 @@ $this_mobile_view = 'false';
 				<h4><?php echo $course_details['title']; ?></h4>
 			</a>
 			<div class="row mt-1">
-				<div class="col-12 cart-course-wrapper p-0">
+				<div class="col-12 p-0">
 					<?php if ($course_details['is_free_course'] == 1) : ?>
 						<?php $total_price = 0; ?>
 						<?php $this->session->set_userdata('total_price_of_checking_out', $total_price); ?>
-						<div class="current-price" style="margin-right: 65%; font-size: 30px; color: #ec5252;"> <b><i><?php echo get_phrase('free'); ?></i></b></div>
+						<div class="current-price" style="margin: 5px auto;width: fit-content;font-size: 30px;"> <b><i><?php echo get_phrase('free'); ?></i></b></div>
 					<?php else : ?>
 						<?php if ($course_details['discount_flag'] == 1) : ?>
 							<?php $total_price = $course_details['discounted_price']; ?>
 							<?php $this->session->set_userdata('total_price_of_checking_out', $total_price); ?>
 							<div class="float-right text-right" style="margin-right: 65%;">
 								<div class="price">
-									<div class="current-price" style="font-size: 30px;"> <?php echo currency($course_details['discounted_price']); ?> </div>
+									<div class="current-price" style="margin: 5px auto;width: fit-content;font-size: 30px;"> <?php echo currency($course_details['discounted_price']); ?> </div>
 								</div>
 								<div class="price">
 									<div class="original-price" style="font-size: 15px;"> <?php echo currency($course_details['price']); ?> </div>
@@ -34,7 +34,7 @@ $this_mobile_view = 'false';
 						<?php elseif ($course_details['discount_flag'] != 1) : ?>
 							<?php $total_price = $course_details['price']; ?>
 							<?php $this->session->set_userdata('total_price_of_checking_out', $total_price); ?>
-							<div class="current-price" style="margin-right: 65%; font-size: 30px;"> <?php echo currency($course_details['price']); ?> </div>
+							<div class="current-price" style="margin: 5px auto;width: fit-content;font-size: 30px;"> <?php echo currency($course_details['price']); ?> </div>
 						<?php endif; ?>
 					<?php endif; ?>
 				</div>
