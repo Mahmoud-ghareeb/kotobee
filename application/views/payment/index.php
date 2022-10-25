@@ -20,6 +20,13 @@
 		if($this->session->userdata('app_url')):
 			include "go_back_to_mobile_app.php";
 		endif;
+
+		if ($this->session->userdata('user_login')) {
+			include '../frontend/default/logged_in_header.php';
+		}else {
+			include '../frontend/default/logged_out_header.php';
+		}
+
 		echo '<div class="container-fluid">';
 			include 'payment_gateway.php';
 		echo '</div>';
