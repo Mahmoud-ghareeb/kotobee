@@ -1381,6 +1381,7 @@ class Home extends CI_Controller
                 redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
             else :
                 $this->session->set_userdata('cart_items', array());
+                $this->session->unset_userdata('applied_coupon');
                 redirect('home/my_courses', 'refresh');
             endif;
             
@@ -1443,10 +1444,11 @@ class Home extends CI_Controller
         $refrence_id = $data->data->bill_reference;
         $this->session->set_userdata('ref', $refrence_id);
         $course_id = $this->session->userdata('cart_items');
-        $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $user_id = $user['id'];
-        $this->crud_model->course_purchase($user_id, 'aman', $amount_paid, $refrence_id);
+        $this->crud_model->course_purchase($user_id, 'aman', $overall_amount, $refrence_id);
+        $this->session->unset_userdata('applied_coupon');
+        
         redirect('home/payment_success/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
         
     }
