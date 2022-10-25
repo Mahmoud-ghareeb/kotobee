@@ -44,7 +44,7 @@ if (isset($sub_category_id)) {
 <section class="category-course-list-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 d-lg-block filter-area">
+            <div class="col-lg-3 d-md-none d-sm-none filter-area">
                 <div class="card border-0 radius-10">
                     <div id="collapseFilter" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body p-0">
