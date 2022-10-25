@@ -15,11 +15,8 @@
 	<link name="favicon" type="image/x-icon" href="<?php echo base_url('uploads/system/'.get_frontend_settings('favicon')); ?>" rel="shortcut icon" />
 	<?php include 'includes_top.php';?>
 </head>
-<body>
+<body style="padding: 0px;">
 	<?php
-		if($this->session->userdata('app_url')):
-			include "go_back_to_mobile_app.php";
-		endif;
 		
 		if ($this->session->userdata('user_login')) {
 			include $_SERVER['DOCUMENT_ROOT'] . '/application/views/frontend/default/logged_in_header.php';
