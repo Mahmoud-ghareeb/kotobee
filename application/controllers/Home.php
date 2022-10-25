@@ -1221,11 +1221,6 @@ class Home extends CI_Controller
             $page_data['enroll_type'] = $enroll_type;
             $page_data['page_name'] = 'aman-checkout';
 
-            $this->session->unset_userdata('user_id');
-            $this->session->unset_userdata('role_id');
-            $this->session->unset_userdata('role');
-            $this->session->unset_userdata('name');
-            $this->session->unset_userdata('user_login');
             $this->session->unset_userdata('cart_items');
 
             $this->load->view('frontend/'.get_frontend_settings('theme') . '/index', $page_data);
@@ -1451,7 +1446,7 @@ class Home extends CI_Controller
         $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $user_id = $user['id'];
-        $this->crud_model->course_purchase($user_id, 'paymob', $amount_paid, $refrence_id);
+        $this->crud_model->course_purchase($user_id, 'aman', $amount_paid, $refrence_id);
         redirect('home/payment_success/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
         
     }
