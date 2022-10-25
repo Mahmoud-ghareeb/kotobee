@@ -817,6 +817,8 @@ class Crud_model extends CI_Model
     public function get_courses_by_search_string($search_string)
     {
         $this->db->like('title', $search_string);
+        $this->db->or_like('short_description', $search_string);
+        $this->db->or_like('description', $search_string);
         $this->db->where('status', 'active');
         return $this->db->get('course');
     }
