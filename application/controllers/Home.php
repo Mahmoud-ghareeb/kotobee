@@ -1431,7 +1431,7 @@ class Home extends CI_Controller
         $amount_paid = (int) $this->session->userdata('total_price_of_checking_out') * 100;
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $user_id = $user['id'];
-        redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/paid', 'refresh');
+        redirect('home/payment_success_mobile/' . $course_id[0] . '/' . $user_id . '/aman', 'refresh');
         
     }
     

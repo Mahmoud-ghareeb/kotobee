@@ -84,6 +84,10 @@ $check_course_enrolled = $this->crud_model->check_course_enrolled($cart_item, $u
 									<div class="alert alert-danger" role="alert">
 										<i class="dripicons-checkmark mr-2"></i><?php echo get_phrase('an_error_occurred'); ?>.
 									</div>
+								<?php elseif ($enroll_type == 'aman') : ?>
+									<div class="alert alert-success" role="alert">
+										<i class="dripicons-checkmark mr-2"></i> <?php echo get_phrase('aman'); ?><strong><?php echo " " . $this->session->userdata('ref') ?></strong>.
+									</div>
 								<?php else : ?>
 									<a href="<?php echo site_url('home/payment_gateway_mobile/' . $cart_item . '/' . $user_id); ?>" class="btn btn-lg w-100 float-right" style="height: 60px;"><?php echo get_phrase('checkout'); ?><?php echo ' / ' . currency($total_price); ?></a>
 								<?php endif; ?>
