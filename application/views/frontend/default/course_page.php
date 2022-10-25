@@ -519,12 +519,12 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
               <div class="title"><b><?php echo site_phrase('includes'); ?>:</b></div>
               <ul>
                 <?php if ($course_details['course_type'] == 'general') : ?>
-                  <li><i class="far fa-file-video"></i>
+                  <li class="d-none"><i class="far fa-file-video"></i>
                     <?php
                     echo $this->crud_model->get_total_duration_of_lesson_by_course_id($course_details['id']) . ' ' . site_phrase('on_demand_books');
                     ?>
                   </li>
-                  <li><i class="far fa-file"></i><?php echo $this->crud_model->get_lessons('course', $course_details['id'])->num_rows() . ' ' . site_phrase('lessons'); ?></li>
+                  <li class="d-none"><i class="far fa-file"></i><?php echo $this->crud_model->get_lessons('course', $course_details['id'])->num_rows() . ' ' . site_phrase('lessons'); ?></li>
                   <li class="d-none"><i class="fas fa-mobile-alt"></i><?php echo site_phrase('access_on_mobile_and_tv'); ?></li>
                 <?php elseif ($course_details['course_type'] == 'scorm') : ?>
                   <li><i class="far fa-file-video"></i><?php echo site_phrase('scorm_course'); ?></li>
