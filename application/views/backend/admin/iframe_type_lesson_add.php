@@ -1,5 +1,7 @@
 <input type="hidden" name="lesson_type" value="other-iframe">
 
+<?php include "book_type_lesson_add.php" ?>
+
 <div class="form-group">
     <label><?php echo get_phrase('iframe_source'); ?>( <?php echo get_phrase('provide_the_source_only'); ?> )</label>
     <?php 
