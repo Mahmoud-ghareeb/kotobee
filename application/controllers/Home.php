@@ -1392,6 +1392,7 @@ class Home extends CI_Controller
     {
         $user   = $this->user_model->get_user($this->session->userdata('user_id'))->row_array();
         $overall_amount = (int) $this->session->userdata('total_price_of_checking_out') * 100;
+        $phone_number = $this->session->userdata('phone_number');
         $items = [];
         $user_details = [
                 "apartment" => "NA", 
@@ -1400,7 +1401,7 @@ class Home extends CI_Controller
                 "first_name" => $user['first_name'], 
                 "street" => "NA", 
                 "building" => "NA", 
-                "phone_number" => '01029912688', 
+                "phone_number" => $phone_number, 
                 "postal_code" => "NA", 
                 "extra_description" => "NA",
                 "city" => "NA", 
@@ -1419,8 +1420,8 @@ class Home extends CI_Controller
         
         $order_id = $res->id;
         $final_res = $this->kiosk->payment_key_request($key_token, $overall_amount, $order_id, $user_details);
-        // print_r(json_encode($final_res));
-        // return 0;
+         print_r(json_encode($final_res));
+         return 0;
         $payment_token = $final_res->token;
         $data = $this->kiosk->kiosk_payment($payment_token);
         //redirect("https://accept.paymob.com/api/acceptance/iframes/402235?payment_token=$payment_token");
