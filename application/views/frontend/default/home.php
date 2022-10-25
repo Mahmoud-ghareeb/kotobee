@@ -295,7 +295,7 @@
                                             <img src="<?php echo $this->crud_model->get_course_thumbnail_url($latest_course['id']); ?>" alt="" class="img-fluid">
                                         </div>
                                         <div class="course-details">
-                                            <h5 class="title" style="width: fit-content;margin: 0px auto 10px;"><?php echo $latest_course['title']; ?></h5>
+                                            <h5 class="title d-none" style="width: fit-content;margin: 0px auto 10px;"><?php echo $latest_course['title']; ?></h5>
                                             <div class="rating" style="width: fit-content;margin: 0px auto 10px;">
                                                 <?php
                                                 $total_rating =  $this->crud_model->get_ratings('course', $latest_course['id'], true)->row()->rating;
