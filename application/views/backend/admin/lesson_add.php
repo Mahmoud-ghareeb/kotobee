@@ -26,11 +26,12 @@ $sections = $this->crud_model->get_section('course', $param2)->result_array();
 <!-- ACTUAL LESSON ADDING FORM -->
 <form class="<?php if($param3 == 'video'): ?>ajaxFormSubmission<?php endif; ?>" action="<?php echo site_url('admin/lessons/'.$param2.'/add'); ?>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="course_id" value="<?php echo $param2; ?>">
-    <div class="form-group">
-        <label><?php echo get_phrase('title'); ?></label>
-        <input type="text" name = "title" class="form-control" required>
-    </div>
-
+    <?php if ($param3 != 'bulk'): ?>
+        <div class="form-group">
+            <label><?php echo get_phrase('title'); ?></label>
+            <input type="text" name = "title" class="form-control" required>
+        </div>
+    <?php endif ?>
     <div class="form-group">
         <label><?php echo get_phrase('section'); ?></label>
         <select class="form-control select2" data-toggle="select2" name="section_id" required>
@@ -52,10 +53,12 @@ $sections = $this->crud_model->get_section('course', $param2)->result_array();
     <?php if ($param3 == 'iframe'): include('iframe_type_lesson_add.php'); endif; ?>
     <?php if ($param3 == 'bulk'): include('bulk_upload_youtube_type.php'); endif; ?>
 
-    <div class="form-group">
-        <label><?php echo get_phrase('summary'); ?></label>
-        <textarea name="summary" id="lesson_summary" class="form-control"></textarea>
-    </div>
+    <?php if ($param3 != 'bulk'): ?>
+        <div class="form-group">
+            <label><?php echo get_phrase('summary'); ?></label>
+            <textarea name="summary" id="lesson_summary" class="form-control"></textarea>
+        </div>
+    <?php endif ?>
 
     <div class="form-group">
         <label><?php echo get_phrase('do_you_want_to_keep_it_free_as_a_preview_lesson'); ?>?</label>
