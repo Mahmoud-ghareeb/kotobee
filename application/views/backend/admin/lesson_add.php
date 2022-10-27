@@ -50,6 +50,7 @@ $sections = $this->crud_model->get_section('course', $param2)->result_array();
     <?php if ($param3 == 'text'): include('text_type_lesson_add.php'); endif; ?>
     <?php if ($param3 == 'image'): include('image_type_lesson_add.php'); endif; ?>
     <?php if ($param3 == 'iframe'): include('iframe_type_lesson_add.php'); endif; ?>
+    <?php if ($param3 == 'bulk'): include('bulk_upload_youtube_type.php'); endif; ?>
 
     <div class="form-group">
         <label><?php echo get_phrase('summary'); ?></label>

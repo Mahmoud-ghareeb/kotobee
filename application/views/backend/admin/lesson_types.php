@@ -92,7 +92,7 @@
     function showLessonAddModal() {
         var course_id = $("#course_id_for_lesson").val();
         if(course_id > 0){
-            var url = "<?php echo site_url('modal/popup/bulk_upload_youtube_type/'); ?>/"+course_id+'/'+$("input[name=lesson_type]:checked").val();
+            var url = "<?php echo site_url('modal/popup/lesson_add/'); ?>/"+course_id+'/'+$("input[name=lesson_type]:checked").val();
             showAjaxModal(url, '<?php echo get_phrase('add_new_lesson'); ?>');
         }else{
             error_notify('<?php echo get_phrase('please_select_a_course'); ?>');

@@ -1,5 +1,5 @@
 
-<input type="hidden" name="lesson_type" value="video-url">
+<input type="hidden" name="lesson_type" value="bulk-type">
 <input type="hidden" name="lesson_provider" value="youtube">
 
 <!-- This portion is for mobile application video lesson -->
