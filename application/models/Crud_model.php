@@ -1123,6 +1123,7 @@ class Crud_model extends CI_Model
             $data['video_type'] = "youtube";
             $data['attachment_type'] = "url";
             $data['video_type_for_mobile_application'] = 'html5';
+            $data['lesson_type'] = 'video';
 
             $csv = $_FILES['bulk_youtube']['tmp_name'];
             $temp = 0;
