@@ -1113,7 +1113,7 @@ class Crud_model extends CI_Model
         $lesson_type = $lesson_type_array[0];
         $data['lesson_type'] = $lesson_type;
 
-        if ($lesson_type == 'video') {
+        if ($lesson_type == 'bulk') {
 
             $data['course_id'] = html_escape($this->input->post('course_id'));
             $data['section_id'] = html_escape($this->input->post('section_id'));
