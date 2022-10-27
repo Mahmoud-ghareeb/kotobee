@@ -1,5 +1,5 @@
 
-<input type="hidden" name="lesson_type" value="bulk-type">
+<input type="hidden" name="lesson_type" value="bulk-url">
 <input type="hidden" name="lesson_provider" value="youtube">
 
 <!-- This portion is for mobile application video lesson -->
@@ -11,6 +11,6 @@
 </div>
 
 <div class="form-group">
-    <label><?php echo get_phrase('duration'); ?>( <?php echo get_phrase('csv_file'); ?> )</label>
+    <label><?php echo get_phrase('file'); ?>( <?php echo get_phrase('csv_file'); ?> )</label>
     <input type="file" class="form-control" name="bulk_youtube" id = "bulk_youtube" accept=".csv" >
 </div>
