@@ -499,7 +499,7 @@ class Crud_model extends CI_Model
 
     public function get_lessons($type = "", $id = "")
     {
-        $this->db->order_by("order", "asc");
+        //$this->db->order_by("order", "asc");
         if ($type == "course") {
             return $this->db->get_where('lesson', array('course_id' => $id));
         } elseif ($type == "section") {
