@@ -226,17 +226,17 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
                         <?php echo $this->crud_model->enrol_history($other_realted_course['id'])->num_rows(); ?>
                       </span>
                       <?php if ($other_realted_course['is_free_course'] == 1) : ?>
-                        <span class="item-price mt-4 mt-md-0">
+                        <span class="item-price mt-4 mt-md-0 d-none">
                           <span class="current-price"><?php echo site_phrase('free'); ?></span>
                         </span>
                       <?php else : ?>
                         <?php if ($other_realted_course['discount_flag'] == 1) : ?>
-                          <span class="item-price mt-4 mt-md-0">
+                          <span class="item-price mt-4 mt-md-0 d-none">
                             <span class="original-price"><?php echo currency($other_realted_course['price']); ?></span>
                             <span class="current-price"><?php echo currency($other_realted_course['discounted_price']); ?></span>
                           </span>
                         <?php else : ?>
-                          <span class="item-price mt-4 mt-md-0">
+                          <span class="item-price mt-4 mt-md-0 d-none">
                             <span class="current-price"><?php echo currency($other_realted_course['price']); ?></span>
                           </span>
                         <?php endif; ?>
