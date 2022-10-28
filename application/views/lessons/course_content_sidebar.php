@@ -115,7 +115,8 @@
                                                         <div class="lesson_duration">
                                                             <?php if ($lesson['lesson_type'] == 'video' || $lesson['lesson_type'] == '' || $lesson['lesson_type'] == NULL): ?>
                                                                 <i class="far fa-clock"></i>
-                                                                <?php echo readable_time_for_humans($lesson['duration']); ?>
+                                                                <?php //echo readable_time_for_humans($lesson['duration']); ?>
+                                                                <?php echo $lesson['duration']; ?>
                                                             <?php elseif($lesson['lesson_type'] == 'quiz'): ?>
                                                                 <i class="far fa-question-circle"></i> <?php echo get_phrase('quiz'); ?>
 
