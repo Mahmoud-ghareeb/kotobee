@@ -3,7 +3,7 @@
         $instructor_details = $this->user_model->get_all_user($course['user_id'])->row_array();
         $course_duration = $this->crud_model->get_total_duration_of_lesson_by_course_id($course['id']);
         $lessons = $this->crud_model->get_lessons('course', $course['id']); ?>
-        <div class="col-md-6 col-xl-4">
+        <div class="col-md-4 col-xl-3">
             <div class="course-box-wrap">
                 <a onclick="$(location).attr('href', '<?php echo site_url('home/course/' . rawurlencode(slugify($course['title'])) . '/' . $course['id']); ?>');" href="javascript:;" class="has-popover">
                     <div class="course-box">
@@ -34,7 +34,7 @@
                                     <span class="text-dark text-12px text-muted ms-2">(<?php echo $number_of_ratings.' '.site_phrase('reviews'); ?>)</span>
                                 </div>
                             </div>
-                            
+
                             <div class="d-flex text-dark">
                                 <div class="">
                                     <i class="far fa-clock text-14px"></i>
