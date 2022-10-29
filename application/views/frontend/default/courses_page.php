@@ -294,4 +294,32 @@ if (isset($sub_category_id)) {
         var redirect_to = $(this).attr('redirect_to');
         window.location.replace(redirect_to);
     });
+
+    $(document).ready(function() {
+        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            if ($(window).width() >= 840) {
+                $('a.has-popover').webuiPopover({
+                    trigger: 'hover',
+                    animation: 'pop',
+                    placement: 'horizontal',
+                    delay: {
+                        show: 500,
+                        hide: null
+                    },
+                    width: 330
+                });
+            } else {
+                $('a.has-popover').webuiPopover({
+                    trigger: 'hover',
+                    animation: 'pop',
+                    placement: 'vertical',
+                    delay: {
+                        show: 100,
+                        hide: null
+                    },
+                    width: 335
+                });
+            }
+        }
+    });
 </script>
