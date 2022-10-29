@@ -273,7 +273,7 @@
         </div>
     </section>
 
-    <section class="course-carousel-area">
+    <!-- <section class="course-carousel-area">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
@@ -443,9 +443,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
-    <section class="">
+    <section class="grid-view">
         <div class="container-lg">
             <div class="category-course-list">
                 <?php $courses = $this->crud_model->get_latest_10_course() ?>

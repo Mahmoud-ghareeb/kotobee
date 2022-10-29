@@ -35,7 +35,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex text-dark">
+                            <!-- <div class="d-flex text-dark">
                                 <div class="">
                                     <i class="far fa-clock text-14px"></i>
                                     <span class="text-muted text-12px"><?php echo $course_duration; ?></span>
@@ -83,7 +83,7 @@
                                         <p class="price text-right d-inline-block float-end"><?php echo currency($course['price']); ?></p>
                                     <?php endif; ?>
                                 <?php endif; ?>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </a>
