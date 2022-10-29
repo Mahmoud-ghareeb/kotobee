@@ -1,5 +1,5 @@
 <section class="home-banner-area" id="home-banner-area" style="background-image: url('<?= base_url("uploads/system/" . get_frontend_settings('banner_image')); ?>'); background-position: right; background-repeat: no-repeat; padding: 100px 0 75px; background-size: auto 100%; color: #fff;">
-    <div class="cropped-home-banner" ></div>
+    <div class="cropped-home-banner" style="z-index: -123;" ></div>
     <div class="container-xl" dir="ltr">
         <div class="row">
             <div class="col position-relative">
