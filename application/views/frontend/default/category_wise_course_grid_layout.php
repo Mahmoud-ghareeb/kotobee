@@ -133,7 +133,7 @@
                                     // } else {
                                     //     $url = site_url('home/get_enrolled_to_free_course/' . $course['id']);
                                     // } ?>
-                                    <!-- <a href="<?php //echo $url; ?>" class="btn green radius-10" onclick="handleEnrolledButton()"><?php //echo site_phrase('get_enrolled'); ?></a> --
+                                    <!-- <a href="<?php //echo $url; ?>" class="btn green radius-10" onclick="handleEnrolledButton()"><?php //echo site_phrase('get_enrolled'); ?></a> -->
                                 <?php else : ?>
                                     <button type="button" class="btn red d-none add-to-cart-btn <?php if (in_array($course['id'], $cart_items)) echo 'addedToCart'; ?> big-cart-button-<?php echo $course['id']; ?>" id="<?php echo $course['id']; ?>" onclick="handleCartItems(this)">
                                         <?php
