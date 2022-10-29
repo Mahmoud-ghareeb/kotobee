@@ -266,6 +266,14 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+
+                    <div class="category-course-list">
+                        <?php $courses = $this->crud_model->get_top_courses()->result_array(); ?>
+                        <?php include 'category_wise_course_grid_layout.php'; ?>
+                        <?php if (count($courses) == 0) : ?>
+                            <?php echo site_phrase('no_result_found'); ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

@@ -34,6 +34,7 @@
                                     <span class="text-dark text-12px text-muted ms-2">(<?php echo $number_of_ratings.' '.site_phrase('reviews'); ?>)</span>
                                 </div>
                             </div>
+                            
                             <div class="d-flex text-dark">
                                 <div class="">
                                     <i class="far fa-clock text-14px"></i>
