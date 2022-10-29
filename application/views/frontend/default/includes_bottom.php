@@ -3,10 +3,10 @@
 <script src="<?php echo base_url() . 'assets/frontend/default/js/popper.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'assets/frontend/default/js/bootstrap.min.js'; ?>"></script>
 
-<?php if ($page_name == "home" || $page_name == "instructor_page") : ?>
+<?php //if ($page_name == "home" || $page_name == "instructor_page") : ?>
 	<script src="<?php echo base_url() . 'assets/frontend/default/js/slick.min.js'; ?>"></script>
 	<script src="<?php echo base_url() . 'assets/frontend/default/js/jquery.webui-popover.min.js'; ?>"></script>
-<?php endif; ?>
+<?php //endif; ?>
 
 <?php if ($page_name == "user_profile") : ?>
 	<script src="<?php echo base_url() . 'assets/frontend/default/js/tinymce.min.js'; ?>"></script>
