@@ -54,7 +54,7 @@ $(window).resize(function () {
 var courseSidebar = $(".course-sidebar");
 var footer = $(".footer-area");
 var courseHeader = $(".course-header-area");
-var margin = 10;
+var margin = 77;
 
 if ($("div").hasClass("course-sidebar")) {
 	var offsetTop = courseSidebar.offset().top + (193 - margin);

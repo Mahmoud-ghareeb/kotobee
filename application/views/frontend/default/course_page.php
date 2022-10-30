@@ -3,7 +3,7 @@ $course_details = $this->crud_model->get_course_by_id($course_id)->row_array();
 $instructor_details = $this->user_model->get_all_user($course_details['user_id'])->row_array();
 ?>
 <section class="course-header-area">
-  <div class="container">
+  <div class="container" style="margin-top: 67px;">
     <div class="row align-items-end">
       <div class="col-lg-8">
         <div class="course-header-wrap">
