@@ -1479,19 +1479,14 @@ class Home extends CI_Controller
 
         $input = file_get_contents('php://input');
         $data = json_decode($input);
-        if($data->success == true)
-        {
-            $trans_id = $data->id;
-            $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
-            $user_id = $course['user_id'];
-            $this->crud_model->enrol_student($user_id);
-            $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-            $this->session->set_userdata('cart_items', array());
-            redirect('home/my_courses', 'refresh');
-        }else{
-            $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
-            redirect('home/shopping_cart', 'refresh');
-        }
+        $trans_id = $data->id;
+        $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
+        $user_id = $course['user_id'];
+        $this->crud_model->enrol_student($user_id);
+        $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
+        $this->session->set_userdata('cart_items', array());
+        redirect('home/my_courses', 'refresh');
+        
     }
 
     
