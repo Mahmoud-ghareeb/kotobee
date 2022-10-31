@@ -1473,14 +1473,12 @@ class Home extends CI_Controller
             $r = $this->crud_model->enrol_student_for_aman($user_id, $course_id);
             $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
             $this->session->set_userdata('cart_items', array());
-            // redirect('home/my_courses', 'refresh');
-            
-            echo json_encode($r);
+            redirect('home/my_courses', 'refresh');
 
         }else{
             $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
-            // redirect('home/shopping_cart', 'refresh');
-            echo json_encode('fail');
+            redirect('home/shopping_cart', 'refresh');
+            // echo json_encode('fail');
         }
 
         
