@@ -1462,7 +1462,7 @@ class Home extends CI_Controller
         $status = $paramList["success"];
         $payment_request_mobile = 'true';
         
-        if ($status == "true") { //APPROVED
+        // if (true) { //APPROVED
             
             $trans_id = $paramList["id"];
             $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
@@ -1472,10 +1472,10 @@ class Home extends CI_Controller
             $this->session->set_userdata('cart_items', array());
             redirect('home/my_courses', 'refresh');
             
-        }else{
-            $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
-            redirect('home/shopping_cart', 'refresh');
-        }
+        // }else{
+        //     $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
+        //     redirect('home/shopping_cart', 'refresh');
+        // }
 
         // $input = file_get_contents('php://input');
         // $data = json_decode($input);
