@@ -1462,7 +1462,7 @@ class Home extends CI_Controller
         $status = $paramList["success"];
         $payment_request_mobile = 'true';
 
-        return json_encode('hi');
+        echo json_encode('hi');
         
         // if (true) { //APPROVED
             
