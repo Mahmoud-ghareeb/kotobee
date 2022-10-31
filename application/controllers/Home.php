@@ -1458,11 +1458,14 @@ class Home extends CI_Controller
     
     public function aman_payment()
     {
-        $paramList = $_POST;
-        $status = $paramList["success"];
-        $payment_request_mobile = 'true';
+        // $paramList = $_POST;
+        // $status = $paramList["success"];
+        // $payment_request_mobile = 'true';
 
-        echo json_encode($_POST['id']);
+        $input = file_get_contents('php://input');
+        $data = json_decode($input);
+
+        echo json_encode($data->id);
         
         // if (true) { //APPROVED
             
@@ -1479,8 +1482,7 @@ class Home extends CI_Controller
         //     redirect('home/shopping_cart', 'refresh');
         // }
 
-        // $input = file_get_contents('php://input');
-        // $data = json_decode($input);
+        
         // $trans_id = $data->id;
         // $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
         // $user_id = $course['user_id'];
