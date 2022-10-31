@@ -1465,7 +1465,7 @@ class Home extends CI_Controller
         // $input = file_get_contents('php://input');
         // $data = json_decode($input);
 
-        echo json_encode($_POST);
+        echo json_encode($_SERVER);
         
         // if (true) { //APPROVED
             
