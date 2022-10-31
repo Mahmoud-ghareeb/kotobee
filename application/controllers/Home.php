@@ -1469,7 +1469,8 @@ class Home extends CI_Controller
             $trans_id = $decoded['obj']['id'];
             $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
             $user_id = $course['user_id'];
-            $r = $this->crud_model->enrol_student($user_id);
+            $course_id = $course['id'];
+            $r = $this->crud_model->enrol_student_for_aman($user_id, $course_id);
             $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
             $this->session->set_userdata('cart_items', array());
             // redirect('home/my_courses', 'refresh');

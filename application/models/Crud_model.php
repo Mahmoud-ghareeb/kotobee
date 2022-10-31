@@ -1866,6 +1866,19 @@ class Crud_model extends CI_Model
             $this->db->insert('enrol', $data);
         }
     }
+
+    public function enrol_student_for_aman($user_id, $course_id)
+    {
+        $purchased_courses = [$course_id];
+        foreach ($purchased_courses as $purchased_course) {
+            $data['user_id'] = $user_id;
+            $data['course_id'] = $purchased_course;
+            $data['date_added'] = strtotime(date('D, d-M-Y'));
+            $data['date_expired'] = strtotime('+1 year', strtotime(date('D, d-M-Y')));
+            $this->db->insert('enrol', $data);
+        }
+    }
+
     public function enrol_a_student_manually()
     {
         $data['course_id'] = $this->input->post('course_id');
