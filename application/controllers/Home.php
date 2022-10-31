@@ -1463,7 +1463,7 @@ class Home extends CI_Controller
         //Attempt to decode the incoming RAW post data from JSON.
         $decoded = json_decode($content, true);
         
-        echo json_encode($decoded['obj']);
+        echo json_encode($decoded['obj']['id']);
 
         
         //Process the JSON.
