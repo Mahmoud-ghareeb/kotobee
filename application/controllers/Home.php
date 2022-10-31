@@ -1474,7 +1474,7 @@ class Home extends CI_Controller
             $this->session->set_userdata('cart_items', array());
             // redirect('home/my_courses', 'refresh');
             
-            echo json_encode('success');
+            echo json_encode($user_id);
 
         }else{
             $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
