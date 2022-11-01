@@ -1460,10 +1460,11 @@ class Home extends CI_Controller
     {        
         //Receive the RAW post data.
         $content = trim(file_get_contents("php://input"));
-        //Attempt to decode the incoming RAW post data from JSON.
-        $decoded = json_decode($content, true);        
+
+        //decode the json
+        $decoded = json_decode($content, true);   
+
         //Process the JSON.
-        
         if ($decoded['obj']['success'] == true) { //APPROVED
             
             $trans_id = $decoded['obj']['id'];
@@ -1471,26 +1472,11 @@ class Home extends CI_Controller
             $user_id = $course['user_id'];
             $course_id = $course['id'];
             $r = $this->crud_model->enrol_student_for_aman($user_id, $course_id);
-            $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-            $this->session->set_userdata('cart_items', array());
-            redirect('home/my_courses', 'refresh');
+            echo json_encode('success');
 
         }else{
-            $this->session->set_flashdata('error_message', site_phrase('an_error_occurred_during_payment'));
-            redirect('home/shopping_cart', 'refresh');
-            // echo json_encode('fail');
+            echo json_encode('faild');
         }
-
-        
-        // $trans_id = $data->id;
-        // $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
-        // $user_id = $course['user_id'];
-        // $this->crud_model->enrol_student($user_id);
-        // $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
-        // $this->session->set_userdata('cart_items', array());
-        // redirect('home/my_courses', 'refresh');
-
-
         
     }
 
