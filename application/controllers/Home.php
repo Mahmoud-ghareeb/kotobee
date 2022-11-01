@@ -1468,7 +1468,7 @@ class Home extends CI_Controller
         if ($decoded['obj']['success'] == true) { //APPROVED
             
             $trans_id = $decoded['obj']['id'];
-            $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
+            $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);  
             $user_id = $course['user_id'];
             $course_id = $course['id'];
             $r = $this->crud_model->enrol_student_for_aman($user_id, $course_id);
