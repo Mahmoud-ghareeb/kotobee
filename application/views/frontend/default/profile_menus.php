@@ -12,7 +12,7 @@ $unreaded_message = $this->db->get()->num_rows();
     background-size: cover;">
     <div class="image-placeholder-2"></div>
     <div class="container" style="position: inherit;">
-      <h1 class="page-title py-5 text-white print-hidden"><?php echo $page_title; ?></h1>
+      <h1 class="page-title py-5 text-white print-hidden" style="padding-top: 107px;"><?php echo $page_title; ?></h1>
     </div>
   </div>
 
