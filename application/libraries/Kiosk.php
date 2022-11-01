@@ -14,7 +14,7 @@ class Kiosk{
     
 	private $curl;
     private $api_key = 'ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6VXhNaUo5LmV5SnVZVzFsSWpvaWFXNXBkR2xoYkNJc0luQnliMlpwYkdWZmNHc2lPalUwTlRNM05Dd2lZMnhoYzNNaU9pSk5aWEpqYUdGdWRDSjkuNktYQmhhM2FzN251TzNzci1pU2kxdlg3bG5Id2hYQldZbDYyLXF1bi1jQ0dRQk1Ma1BvV0dOSkl3ejdfa19QQy1GQ1BKdzdxUmNVY1BpRjRaUjJjX0E=';
-    private $paymob_id = '2992646'; //2992646 //2912687
+    private $paymob_id = '2912687'; //2992646 //2912687
     
     function __construct()
     {
