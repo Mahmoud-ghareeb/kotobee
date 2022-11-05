@@ -210,9 +210,11 @@ if (isset($sub_category_id)) {
                         //print_r($lessons);
                         foreach ($lessons as $lesson) : ?>
                         <li class="lecture has-preview text-14px ">
-                            <span class="lecture-title <?php if($lesson['is_free'] == 1) echo 'text-primary'; ?>" onclick="go_course_playing_page('<?php echo $course_details['id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['c_title']; ?></span>
-                            <span class="lecture-title <?php if($lesson['is_free'] == 1) echo 'text-primary'; ?>" onclick="go_course_playing_page('<?php echo $course_details['id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['l_title']; ?></span>
 
+                            <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['l_title']; ?></span>
+                            
+                            <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['c_title']; ?></span>
+                            
                             <div class="lecture-info float-lg-end">
                             <?php if($lesson['is_free'] == 1): ?>
                                 <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
