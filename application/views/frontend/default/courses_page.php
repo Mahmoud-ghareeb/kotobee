@@ -204,6 +204,30 @@ if (isset($sub_category_id)) {
                         </div> -->
                     </div>
                 </div>
+                <div id="" class="lecture-list collapse show">
+                    <ul>
+                        <?php //$lessons = $this->crud_model->get_lessons('section', $section['id'])->result_array();
+                        foreach ($lessons as $lesson) : ?>
+                        <li class="lecture has-preview text-14px ">
+                            <span class="lecture-title <?php if($lesson['is_free'] == 1) echo 'text-primary'; ?>" onclick="go_course_playing_page('<?php echo $course_details['id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['title']; ?></span>
+
+                            <div class="lecture-info float-lg-end">
+                            <?php if($lesson['is_free'] == 1): ?>
+                                <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
+                                    <i class="fas fa-eye"></i>
+                                    <?php echo site_phrase('preview'); ?>
+                                </span>
+                            <?php endif; ?>
+
+                            <span class="lecture-time ps-2">
+                                <?php if($lesson['duration'] == "")echo'<span class="opacity-0">.</span>'; ?>
+                                <?php echo $lesson['duration']; ?>
+                            </span>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
                 <div class="category-course-list">
                     <?php include 'category_wise_course_' . $layout . '_layout.php'; ?>
                     <?php if (count($courses) == 0) : ?>

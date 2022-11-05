@@ -828,6 +828,13 @@ class Crud_model extends CI_Model
         return $this->db->get('course');
     }
 
+    public function get_lessons_by_search_string($search_string)
+    {
+        $this->db->like('title', $search_string);
+        $this->db->limit('25');
+        return $this->db->get('lesson');
+    }
+
 
     public function get_course_by_id($course_id = "")
     {

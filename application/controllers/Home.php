@@ -697,6 +697,7 @@ class Home extends CI_Controller
         if (isset($_GET['query']) && !empty($_GET['query'])) {
             $search_string = $_GET['query'];
             $page_data['courses'] = $this->crud_model->get_courses_by_search_string($search_string)->result_array();
+            $page_data['lessons'] = $this->crud_model->get_lessons_by_search_string($search_string)->result_array();
             $page_data['total_result'] = count($page_data['courses']);
         } else {
             $this->session->set_flashdata('error_message', site_phrase('no_search_value_found'));
@@ -1480,9 +1481,9 @@ class Home extends CI_Controller
         
     }
 
-    public function pinf(){
-        echo phpinfo();
-        
-    }
+    // public function pinf(){
+    //     echo phpinfo();
+
+    // }
     
 }
