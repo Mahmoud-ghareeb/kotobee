@@ -207,10 +207,11 @@ if (isset($sub_category_id)) {
                 <div id="" class="lecture-list collapse show">
                     <ul>
                         <?php //$lessons = $this->crud_model->get_lessons('section', $section['id'])->result_array();
-                        print_r($lessons);
+                        //print_r($lessons);
                         foreach ($lessons as $lesson) : ?>
                         <li class="lecture has-preview text-14px ">
-                            <span class="lecture-title <?php if($lesson['is_free'] == 1) echo 'text-primary'; ?>" onclick="go_course_playing_page('<?php echo $course_details['id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['title']; ?></span>
+                            <span class="lecture-title <?php if($lesson['is_free'] == 1) echo 'text-primary'; ?>" onclick="go_course_playing_page('<?php echo $course_details['id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['c_title']; ?></span>
+                            <span class="lecture-title <?php if($lesson['is_free'] == 1) echo 'text-primary'; ?>" onclick="go_course_playing_page('<?php echo $course_details['id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['l_title']; ?></span>
 
                             <div class="lecture-info float-lg-end">
                             <?php if($lesson['is_free'] == 1): ?>
