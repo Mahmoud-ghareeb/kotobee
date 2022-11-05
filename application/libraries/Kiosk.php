@@ -113,5 +113,6 @@ class Kiosk{
 		curl_close($this->curl);
 		return $response;
 	}
+    
 }
 ?>
