@@ -832,9 +832,9 @@ class Crud_model extends CI_Model
     {
         $this->db->select('lesson.*, course.*');
         $this->db->like('title', $search_string);
+        $this->db->join('course', 'lesson.course_id = course.id');
         $this->db->limit('25');
         $this->db->from('lesson');
-        $this->db->join('course', 'lesson.course_id = course.id', 'left');
         return $this->db->get();
     }
 
