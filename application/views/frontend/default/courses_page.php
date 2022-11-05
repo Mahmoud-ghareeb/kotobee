@@ -204,34 +204,36 @@ if (isset($sub_category_id)) {
                         </div> -->
                     </div>
                 </div>
-                <div class="lecture-group-wrapper">
-                    <div id="" class="lecture-list collapse show">
-                        <ul>
-                            <?php //$lessons = $this->crud_model->get_lessons('section', $section['id'])->result_array();
-                            //print_r($lessons);
-                            foreach ($lessons as $lesson) : ?>
-                            <li class="lecture has-preview text-14px ">
+                <div class="course-curriculum-accordion">
+                    <div class="lecture-group-wrapper">
+                        <div id="" class="lecture-list collapse show">
+                            <ul>
+                                <?php //$lessons = $this->crud_model->get_lessons('section', $section['id'])->result_array();
+                                //print_r($lessons);
+                                foreach ($lessons as $lesson) : ?>
+                                <li class="lecture has-preview text-14px ">
 
-                                <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['l_title']; ?></span>
-                                
-                                <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['id']; ?>')"><?php echo $lesson['c_title']; ?></span>
-                                
-                                <div class="lecture-info float-lg-end">
-                                <?php if($lesson['is_free'] == 1): ?>
-                                    <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
-                                        <i class="fas fa-eye"></i>
-                                        <?php echo site_phrase('preview'); ?>
+                                    <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['l_id']; ?>')"><?php echo $lesson['l_title']; ?></span>
+                                    
+                                    <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['l_id']; ?>')"><?php echo $lesson['c_title']; ?></span>
+                                    
+                                    <div class="lecture-info float-lg-end">
+                                    <?php if($lesson['is_free'] == 1): ?>
+                                        <span class="lecture-preview d-none" onclick="lesson_preview('<?php echo site_url('home/preview_free_lesson/'.$lesson['id']); ?>', '<?php echo site_phrase('lesson').': '.$lesson['title']; ?>')">
+                                            <i class="fas fa-eye"></i>
+                                            <?php echo site_phrase('preview'); ?>
+                                        </span>
+                                    <?php endif; ?>
+
+                                    <span class="lecture-time ps-2">
+                                        <?php if($lesson['duration'] == "")echo'<span class="opacity-0">.</span>'; ?>
+                                        <?php echo $lesson['duration']; ?>
                                     </span>
-                                <?php endif; ?>
-
-                                <span class="lecture-time ps-2">
-                                    <?php if($lesson['duration'] == "")echo'<span class="opacity-0">.</span>'; ?>
-                                    <?php echo $lesson['duration']; ?>
-                                </span>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
+                                    </div>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="category-course-list">
@@ -251,6 +253,35 @@ if (isset($sub_category_id)) {
 </section>
 
 <script type="text/javascript">
+
+function go_course_playing_page(course_id, lesson_id){
+    $.ajax({
+      url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>',
+      success: function(response) {
+        console.log(response);
+        if (!response) {
+          // alert('<?php echo $this->session->userdata('url_history'); ?>');
+          window.location.replace("<?php echo site_url('login'); ?>");
+        }else{
+          var course_playing_url = "<?php echo site_url('home/lesson/'.slugify($course_details['title'])); ?>/"+course_id+'/'+lesson_id;
+
+          $.ajax({
+            url: '<?php echo site_url('home/go_course_playing_page/'); ?>'+course_id+'/'+lesson_id,
+            type: 'POST',
+            success: function(response) {
+              console.log(response);
+              if(response == 1){
+                window.location.replace(course_playing_url);
+              }else{
+                toastr.error(JSON.parse(response));
+              }
+            }
+          });
+        }
+      }
+    });
+  }
+
     function get_url() {
         var urlPrefix = '<?php echo site_url('home/courses?'); ?>'
         var urlSuffix = "";

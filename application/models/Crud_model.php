@@ -830,7 +830,7 @@ class Crud_model extends CI_Model
 
     public function get_lessons_by_search_string($search_string)
     {
-        $this->db->select('l.title as l_title, l.duration, l.video_url, c.id as c_id, c.title as c_title');
+        $this->db->select('l.id as l_id,l.title as l_title, l.duration, l.video_url, c.id as c_id, c.title as c_title');
         $this->db->from('lesson l');
         $this->db->join('course c', 'l.course_id = c.id');
         $this->db->like('l.title', $search_string);
