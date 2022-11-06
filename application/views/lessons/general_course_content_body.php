@@ -178,7 +178,7 @@
             <?php endif; ?>
         </div>
 
-        <div class="" style="margin: 20px 0;" id = "lesson-summary">
+        <div class="d-none" style="margin: 20px 0;" id = "lesson-summary">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title w-100 mb-3"><?php echo $lesson_details['lesson_type'] == 'quiz' ? get_phrase('instruction') : get_phrase("note"); ?>:</h5>
