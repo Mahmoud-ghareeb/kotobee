@@ -1,5 +1,5 @@
 <style>
-    @media screen and (min-width: 992) {
+    @media screen and (min-width: 992px) {
         .fixed-lg{
             position: fixed;
             width: inherit;
