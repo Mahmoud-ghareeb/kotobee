@@ -20,8 +20,8 @@
                     <!------------- PLYR.IO ------------>
                     <link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
 
-                    <div class="plyr__video-embed" id="player">
-                        <iframe height="500" src="<?php echo $video_url;?>?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                    <div class="plyr__video-embed" id="player" >
+                        <iframe height="450" src="<?php echo $video_url;?>?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
                     </div>
 
                     <script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
