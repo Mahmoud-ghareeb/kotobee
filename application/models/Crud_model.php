@@ -2032,6 +2032,12 @@ class Crud_model extends CI_Model
         }
     }
 
+    public function number_of_lessons()
+    {
+        $arr = $this->db->get('lesson')->num_rows();
+        return $arr;
+    }
+
     public function get_total_duration_of_lesson_by_course_id($course_id)
     {
         $total_duration = 0;

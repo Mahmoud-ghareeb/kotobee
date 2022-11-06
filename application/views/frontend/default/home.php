@@ -43,8 +43,8 @@
                     <i class="fas fa-bullseye float-start"></i>
                     <div class="text-box">
                         <h4><?php
-                            $status_wise_courses = $this->crud_model->get_status_wise_courses();
-                            $number_of_courses = $status_wise_courses['active']->num_rows();
+                            $status_wise_courses = $this->crud_model->number_of_lessons();
+                            $number_of_courses = $status_wise_courses;
                             echo $number_of_courses . ' ' . site_phrase('online_courses'); ?></h4>
                         <p><?php echo site_phrase('explore_a_variety_of_fresh_topics'); ?></p>
                     </div>
