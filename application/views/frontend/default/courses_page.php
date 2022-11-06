@@ -225,7 +225,7 @@ if (isset($sub_category_id)) {
                                         </span>
                                     <?php endif; ?>
 
-                                    <span class="lecture-time ps-2">
+                                    <span class="lecture-time ps-2 d-none">
                                         <?php if($lesson['duration'] == "")echo'<span class="opacity-0">.</span>'; ?>
                                         <?php echo $lesson['duration']; ?>
                                     </span>
