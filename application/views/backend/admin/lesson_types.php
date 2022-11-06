@@ -32,7 +32,6 @@
         <input type="radio" id="youtube" name="lesson_type" class="custom-control-input" value="youtube" <?php if($selected_lesson == 'youtube') echo 'checked'; ?>>
         <label class="custom-control-label" for="youtube">YouTube <?php echo get_phrase('video'); ?></label>
     </div>
-    <!-- 
     <div class="custom-control custom-radio">
         <input type="radio" id="vimeo" name="lesson_type" class="custom-control-input" value="vimeo" <?php if($selected_lesson == 'vimeo') echo 'checked'; ?>>
         <label class="custom-control-label" for="vimeo">Vimeo <?php echo get_phrase('video'); ?></label>
@@ -66,7 +65,7 @@
     <div class="custom-control custom-radio">
         <input type="radio" id="image" name="lesson_type" class="custom-control-input" value="image" <?php if($selected_lesson == 'image') echo 'checked'; ?>>
         <label class="custom-control-label" for="image"><?php echo get_phrase('image_file'); ?></label>
-    </div> -->
+    </div>
     
     <div class="custom-control custom-radio">
         <input type="radio" id="bulk" name="lesson_type" class="custom-control-input" value="bulk" checked>
