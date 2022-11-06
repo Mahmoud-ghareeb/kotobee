@@ -5,7 +5,7 @@
             <?php echo remove_js(htmlspecialchars_decode($drip_content_settings['locked_lesson_message'])); ?>
         </div>
     <?php else: ?>
-        <div class="" >
+        <div class="position-fixed" >
             <?php
             $lesson_thumbnail_url = $this->crud_model->get_lesson_thumbnail_url($lesson_id);
             // If the lesson type is video
