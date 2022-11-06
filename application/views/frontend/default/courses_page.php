@@ -213,9 +213,9 @@ if (isset($sub_category_id)) {
                                 foreach ($lessons as $lesson) : ?>
                                 <li class="lecture has-preview text-14px ">
 
-                                    <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['l_id']; ?>')"><?php echo $lesson['l_title']; ?></span>
+                                    <span class="lecture-title" onclick="go_course_playing_page('<?php echo $lesson['c_id']; ?>', '<?php echo $lesson['l_id']; ?>')"><?php echo $lesson['l_title']; ?> من كتاب <?php echo $lesson['c_title']; ?></span>
                                     
-                                    <span class="lecture-title" style="margin-right: 77px;color: black;cursor: default;" ><?php echo $lesson['c_title']; ?></span>
+                                    <!-- <span class="lecture-title d-none" style="margin-right: 77px;color: black;cursor: default;" ></span> -->
                                     
                                     <div class="lecture-info float-lg-end">
                                     <?php if($lesson['is_free'] == 1): ?>
