@@ -204,7 +204,7 @@ if (isset($sub_category_id)) {
                         </div> -->
                     </div>
                 </div>
-                <div class="course-curriculum-accordion">
+                <div class="course-curriculum-accordion" style="margin-bottom: 20px;">
                     <div class="lecture-group-wrapper">
                         <div id="" class="lecture-list collapse show">
                             <ul>
