@@ -5,6 +5,9 @@
             width: inherit;
             height: 90%;
         }
+        body{
+            overflow-x: hidden;
+        }
     }
 </style>
 <div class="col-lg-9 order-1 course_col" style="position: relative;" id = "video_player_area">
