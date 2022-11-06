@@ -1,3 +1,11 @@
+<style>
+    @media screen and (min-width: 992) {
+        .fixed-lg{
+            position: fixed;
+            width: inherit;
+        }
+    }
+</style>
 <div class="col-lg-9 order-1 course_col" style="position: relative;" id = "video_player_area">
     <!-- <div class="" style="background-color: #333;"> -->
     <?php if($show_locked_message && $course_details['enable_drip_content']): ?>
@@ -5,7 +13,7 @@
             <?php echo remove_js(htmlspecialchars_decode($drip_content_settings['locked_lesson_message'])); ?>
         </div>
     <?php else: ?>
-        <div class="" >
+        <div class="fixed-lg">
             <?php
             $lesson_thumbnail_url = $this->crud_model->get_lesson_thumbnail_url($lesson_id);
             // If the lesson type is video
