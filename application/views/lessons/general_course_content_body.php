@@ -1,6 +1,6 @@
 <style>
     @media screen and (min-width: 992px) {
-        .fixed-lg{
+        #fixed-lg{
             position: fixed;
             width: inherit;
             height: 90%;
@@ -29,7 +29,7 @@
                     <!------------- PLYR.IO ------------>
                     <link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
 
-                    <div class="plyr__video-embed fixed-lg" id="player" >
+                    <div class="plyr__video-embed " id="player fixed-lg" >
                         <iframe height="500" src="<?php echo $video_url;?>?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
                     </div>
 
