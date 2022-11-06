@@ -14,7 +14,7 @@
             <?php echo remove_js(htmlspecialchars_decode($drip_content_settings['locked_lesson_message'])); ?>
         </div>
     <?php else: ?>
-        <div class="">
+        <div class="fixed-lg">
             <?php
             $lesson_thumbnail_url = $this->crud_model->get_lesson_thumbnail_url($lesson_id);
             // If the lesson type is video
@@ -29,10 +29,8 @@
                     <!------------- PLYR.IO ------------>
                     <link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
 
-                    <div class="fixed-lg">
-                    <div class="plyr__video-embed " id="player" >
+                    <div class="plyr__video-embed" id="player" >
                         <iframe height="500" src="<?php echo $video_url;?>?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-                    </div>
                     </div>
 
                     <script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
