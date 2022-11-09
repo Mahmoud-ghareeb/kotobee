@@ -1466,7 +1466,7 @@ class Home extends CI_Controller
         $decoded = json_decode($content, true);   
 
         //Process the JSON.
-        if ($decoded['obj']['success'] == true) { //APPROVED
+        // if ($decoded['obj']['success'] == true) { //APPROVED
             
             $trans_id = $decoded['obj']['id'];
             $course = $this->crud_model->get_payment_details_by_transaction_id($trans_id);
@@ -1475,9 +1475,9 @@ class Home extends CI_Controller
             $this->crud_model->enrol_student_for_aman($user_id, $course_id);
             echo json_encode('success');
 
-        }else{
-            echo json_encode('faild');
-        }
+        // }else{
+        //     echo json_encode('faild');
+        // }
         
     }
 
