@@ -8,7 +8,7 @@
                         <img src="<?php echo $this->crud_model->get_course_thumbnail_url($course['id']); ?>" alt="" class="img-fluid">
                     </a>
                 </div>
-                <div class="course-details">
+                <div class="course-details d-none">
                     <a href="<?php echo site_url('home/course/' . rawurlencode(slugify($course['title'])) . '/' . $course['id']); ?>" class="course-title"><?php echo $course['title']; ?></a>
 
                     <div class="course-subtitle d-none d-md-block">
