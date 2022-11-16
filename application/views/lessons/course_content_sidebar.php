@@ -68,7 +68,7 @@
                                 </div>
 
                                 <div id="<?php echo 'collapse-'.$section['id']; ?>" class="collapse <?php if($section_id == $section['id']) echo 'show'; ?>" aria-labelledby="<?php echo 'heading-'.$section['id']; ?>" data-parent="#accordionExample">
-                                    <div class="card-body"  style="padding:0px;">
+                                    <div class="card-body"  style="padding:0px;height: 400px;overflow-y: scroll;">
                                         <table style="width: 100%;">
                                             <?php foreach ($lessons as $key => $lesson): ?>
                                                 <?php
