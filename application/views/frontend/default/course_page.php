@@ -459,7 +459,7 @@ $instructor_details = $this->user_model->get_all_user($course_details['user_id']
             </div>
           <?php endif; ?>
           <div class="course-sidebar-text-box">
-            <div class="price text-center">
+            <div class="price text-center d-none">
               <?php if ($course_details['is_free_course'] == 1) : ?>
                 <span class="current-price"><span class="current-price"><?php echo site_phrase('free'); ?></span></span>
               <?php else : ?>
