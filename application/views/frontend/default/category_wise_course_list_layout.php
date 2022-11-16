@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="course-price-rating">
-                    <div class="course-price">
+                    <div class="course-price d-none">
                         <?php if ($course['is_free_course'] == 1) : ?>
                             <span class="current-price"><?php echo site_phrase('free'); ?></span>
                         <?php else : ?>
