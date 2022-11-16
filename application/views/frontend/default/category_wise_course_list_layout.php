@@ -15,6 +15,29 @@
                         <?php echo ellipsis($course['short_description'], 60); ?>
                     </div>
 
+                    <div class="rating">
+                        <?php
+                        $total_rating =  $this->crud_model->get_ratings('course', $course['id'], true)->row()->rating;
+                        $number_of_ratings = $this->crud_model->get_ratings('course', $course['id'])->num_rows();
+                        if ($number_of_ratings > 0) {
+                            $average_ceil_rating = ceil($total_rating / $number_of_ratings);
+                        } else {
+                            $average_ceil_rating = 0;
+                        }
+
+                        for ($i = 1; $i < 6; $i++) : ?>
+                            <?php if ($i <= $average_ceil_rating) : ?>
+                                <i class="fas fa-star filled"></i>
+                            <?php else : ?>
+                                <i class="fas fa-star"></i>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                        <span class="d-inline-block average-rating"><?php echo $average_ceil_rating; ?></span>
+                    </div>
+                    <div class="rating-number">
+                        <?php echo $this->crud_model->get_ratings('course', $course['id'])->num_rows() . ' ' . site_phrase('ratings'); ?>
+                    </div>
+
                     <div class="course-meta d-none">
                         <div class="row">
                             <div class="col-md-12">
@@ -56,7 +79,7 @@
 
                     </div>
                 </div>
-                <div class="course-price-rating">
+                <div class="course-price-rating d-none">
                     <div class="course-price d-none">
                         <?php if ($course['is_free_course'] == 1) : ?>
                             <span class="current-price"><?php echo site_phrase('free'); ?></span>
