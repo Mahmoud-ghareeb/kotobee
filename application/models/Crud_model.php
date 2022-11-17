@@ -1863,7 +1863,7 @@ class Crud_model extends CI_Model
         $this->db->order_by("id", "desc");
         $this->db->limit('20');
         $this->db->where('status', 'active');
-        return $this->db->get('leson')->result_array();
+        return $this->db->get('course')->result_array();
     }
 
     public function enrol_student($user_id)
