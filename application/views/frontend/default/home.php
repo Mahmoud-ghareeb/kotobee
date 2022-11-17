@@ -273,18 +273,19 @@
         </div>
     </section>
 
-    <!-- <section class="course-carousel-area">
+    <section class="course-carousel-area">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
                     <h3 class="course-carousel-title mb-4 d-none"><?php echo site_phrase('top') . ' 10 ' . site_phrase('latest_courses'); ?></h3>
 
-                    <!-- page loader --
+                    -- page loader --
                     <div class="animated-loader"><div class="spinner-border text-secondary" role="status"></div></div>
 
                     <div class="course-carousel shown-after-loading" style="display: none;">
                         <?php
                         $latest_courses = $this->crud_model->get_latest_10_course();
+                        
                         foreach ($latest_courses as $latest_course) : ?>
                             <?php
                                 $lessons = $this->crud_model->get_lessons('course', $latest_course['id']);

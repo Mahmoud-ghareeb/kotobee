@@ -1,5 +1,5 @@
 <div class="row">
-    <?php foreach ($courses as $course) :
+    <?php foreach ($courses as $course){
         $instructor_details = $this->user_model->get_all_user($course['user_id'])->row_array();
         $course_duration = $this->crud_model->get_total_duration_of_lesson_by_course_id($course['id']);
         $lessons = $this->crud_model->get_lessons('course', $course['id']); ?>
@@ -116,9 +116,9 @@
                             <ul>
                                 <?php
                                 $outcomes = json_decode($course['outcomes']);
-                                foreach ($outcomes as $outcome) : ?>
+                                foreach ($outcomes as $outcome){ ?>
                                     <li><?php echo $outcome; ?></li>
-                                <?php endforeach; ?>
+                                <?php } ?>
                             </ul>
                         </div>
                         <div class="popover-btns">
@@ -153,5 +153,5 @@
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    <?php } ?>
 </div>
