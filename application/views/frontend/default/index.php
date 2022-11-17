@@ -2,6 +2,7 @@
 <?php 
 
 	$lang = $this->session->userdata('language');
+	error_reporting(-1);
 
 ?>
 
