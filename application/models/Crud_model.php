@@ -1860,7 +1860,7 @@ class Crud_model extends CI_Model
         if (addon_status('scorm_course')) {
             $this->db->where('course_type', 'general');
         }
-        $this->db->order_by("id", "asc");
+        $this->db->order_by("id", "desc");
         $this->db->limit('20');
         $this->db->where('status', 'active');
         return $this->db->get('course')->result_array();
