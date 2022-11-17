@@ -254,8 +254,8 @@ if (isset($sub_category_id)) {
 
 <script type="text/javascript">
 
-function go_course_playing_page(course_id, lesson_id){
-    $.ajax({
+    function go_course_playing_page(course_id, lesson_id){
+        $.ajax({
       url: '<?php echo site_url('home/isLoggedIn?url_history='.base64_encode(current_url())); ?>',
       success: function(response) {
         console.log(response);
@@ -279,8 +279,8 @@ function go_course_playing_page(course_id, lesson_id){
           });
         }
       }
-    });
-  }
+        });
+    }
 
     function get_url() {
         var urlPrefix = '<?php echo site_url('home/courses?'); ?>'
